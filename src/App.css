@@ -1,6 +1,6 @@
 .app {
   min-height: 100svh;
-  background: #f3f0ea;
+  background: #fff;
   color: #161512;
 }
 
@@ -8,22 +8,24 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 96px;
   width: 100%;
-  padding: 72px 18px 96px;
+  padding: 0 18px;
 }
 
 .photo-item {
   display: flex;
+  align-items: center;
   justify-content: center;
   width: 100%;
+  min-height: 100svh;
   margin: 0;
+  padding: 64px 0;
 }
 
 .photo-card {
   display: block;
-  width: 100%;
-  max-width: var(--photo-max-width, 1080px);
+  width: auto;
+  max-width: min(calc(100vw - 36px), var(--photo-max-width, 1080px));
   padding: 0;
   overflow: hidden;
   cursor: zoom-in;
@@ -41,7 +43,9 @@
 
 .photo-card__image {
   display: block;
-  width: 100%;
+  width: auto;
+  max-width: min(calc(100vw - 36px), var(--photo-max-width, 1080px));
+  max-height: calc(100svh - 128px);
   height: auto;
   border: 0;
   opacity: 0;
@@ -66,7 +70,19 @@
 
 @media (max-width: 720px) {
   .photo-list {
-    gap: 48px;
-    padding: 36px 12px 56px;
+    padding: 0 12px;
+  }
+
+  .photo-item {
+    padding: 48px 0;
+  }
+
+  .photo-card,
+  .photo-card__image {
+    max-width: calc(100vw - 24px);
+  }
+
+  .photo-card__image {
+    max-height: calc(100svh - 96px);
   }
 }

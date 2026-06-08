@@ -6,6 +6,9 @@ import photosJson from './data/photos.generated.json'
 import type { Photo } from './types/photo'
 
 const photos = photosJson as Photo[]
+const photoBaseUrl = trimTrailingSlash(
+  import.meta.env.VITE_PHOTO_BASE_URL || '/photos',
+)
 
 function App() {
   const lightboxRef = useRef<PhotoSwipeLightbox | null>(null)
@@ -13,11 +16,11 @@ function App() {
   useEffect(() => {
     const lightbox = new PhotoSwipeLightbox({
       dataSource: photos.map((photo) => ({
-        src: photo.full.src,
+        src: resolvePhotoUrl(photo.full.src),
         width: photo.full.width,
         height: photo.full.height,
         alt: photo.alt,
-        msrc: photo.sources[0]?.jpeg ?? photo.full.src,
+        msrc: resolvePhotoUrl(photo.sources[0]?.jpeg ?? photo.full.src),
       })),
       bgClickAction: 'close',
       arrowNext: false,
@@ -29,6 +32,7 @@ function App() {
       initialZoomLevel: 'fit',
       secondaryZoomLevel: 1,
       showHideAnimationType: 'none',
+      tapAction: 'zoom',
       zoom: false,
       pswpModule: () => import('photoswipe'),
     })
@@ -140,15 +144,15 @@ function PhotoTile({ photo, index, onOpen }: PhotoTileProps) {
       ? '(max-width: 820px) calc(100vw - 36px), 720px'
       : '(max-width: 1180px) calc(100vw - 36px), 1080px'
   const avifSrcSet = photo.sources
-    .map((source) => `${source.avif} ${source.width}w`)
+    .map((source) => `${resolvePhotoUrl(source.avif)} ${source.width}w`)
     .join(', ')
   const webpSrcSet = photo.sources
-    .map((source) => `${source.webp} ${source.width}w`)
+    .map((source) => `${resolvePhotoUrl(source.webp)} ${source.width}w`)
     .join(', ')
   const jpegSrcSet = photo.sources
-    .map((source) => `${source.jpeg} ${source.width}w`)
+    .map((source) => `${resolvePhotoUrl(source.jpeg)} ${source.width}w`)
     .join(', ')
-  const fallback = photo.sources.at(-1)?.jpeg ?? photo.full.src
+  const fallback = resolvePhotoUrl(photo.sources.at(-1)?.jpeg ?? photo.full.src)
 
   return (
     <figure className="photo-item">
@@ -184,6 +188,23 @@ function PhotoTile({ photo, index, onOpen }: PhotoTileProps) {
       </button>
     </figure>
   )
+}
+
+function resolvePhotoUrl(value: string) {
+  if (
+    value.startsWith('http://') ||
+    value.startsWith('https://') ||
+    value.startsWith('data:') ||
+    value.startsWith('/')
+  ) {
+    return value
+  }
+
+  return `${photoBaseUrl}/${value}`
+}
+
+function trimTrailingSlash(value: string) {
+  return value.replace(/\/+$/, '')
 }
 
 export default App

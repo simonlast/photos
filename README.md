@@ -31,7 +31,7 @@ GitHub Pages deploys `dist` through `.github/workflows/deploy.yml` and serves
 Production image assets should be uploaded to Cloudflare R2:
 
 ```bash
-VITE_PHOTO_BASE_URL="https://img.photos.simonlast.org" npm run photos:process
+npm run photos:process
 npm run photos:upload
 ```
 

@@ -25,9 +25,9 @@ Generated image assets go to `public/photos`, and the app imports
 - A small base64 placeholder and dominant color.
 - A manifest consumed by the React app.
 
-Set `VITE_PHOTO_BASE_URL` to switch generated manifest URLs. For local
-development the default is `/photos`. For R2 it should be the public image
-domain, for example `https://img.photos.simonlast.org`.
+The manifest stores image filenames only. The app prefixes them with
+`VITE_PHOTO_BASE_URL` at build/runtime. Local development defaults to `/photos`;
+the GitHub Pages workflow builds with `https://img.photos.simonlast.org`.
 
 ## R2 Upload
 
@@ -44,7 +44,7 @@ R2_PUBLIC_BASE_URL=https://img.photos.simonlast.org
 Then run:
 
 ```bash
-VITE_PHOTO_BASE_URL="$R2_PUBLIC_BASE_URL" npm run photos:process
+npm run photos:process
 npm run photos:upload
 ```
 

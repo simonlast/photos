@@ -31,9 +31,6 @@ const sourceDir =
 const outputDir = process.env.PHOTO_OUTPUT_DIR ?? 'public/photos'
 const manifestPath =
   process.env.PHOTO_MANIFEST_PATH ?? 'src/data/photos.generated.json'
-const publicBaseUrl = trimTrailingSlash(
-  process.env.VITE_PHOTO_BASE_URL ?? '/photos',
-)
 const gridWidths = [420, 840, 1260]
 const inputExtensions = new Set([
   '.avif',
@@ -178,11 +175,7 @@ async function findImages(dir: string) {
 }
 
 function publicUrl(fileName: string) {
-  if (publicBaseUrl === '') {
-    return fileName
-  }
-
-  return `${publicBaseUrl}/${fileName}`
+  return fileName
 }
 
 function titleFromName(name: string) {
@@ -200,10 +193,6 @@ function rgbToHex(red: number, green: number, blue: number) {
   return `#${[red, green, blue]
     .map((channel) => channel.toString(16).padStart(2, '0'))
     .join('')}`
-}
-
-function trimTrailingSlash(value: string) {
-  return value.replace(/\/+$/, '')
 }
 
 function uniqueNumber(value: number, index: number, values: number[]) {
