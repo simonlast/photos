@@ -38,6 +38,7 @@ const sourceDir =
 const outputDir = process.env.PHOTO_OUTPUT_DIR ?? 'public/photos'
 const manifestPath =
   process.env.PHOTO_MANIFEST_PATH ?? 'src/data/photos.generated.json'
+const includePath = process.env.PHOTO_INCLUDE_PATH ?? 'photos.include.txt'
 const displayBounds = { width: 2160, height: 1800 }
 const inputExtensions = new Set([
   '.avif',
@@ -51,7 +52,8 @@ const inputExtensions = new Set([
 ])
 
 async function main() {
-  const inputs = await findImages(sourceDir)
+  const includeList = await readIncludeList()
+  const inputs = filterIncludedImages(await findImages(sourceDir), includeList)
   const existingPhotos = await readExistingManifest()
 
   await mkdir(outputDir, { recursive: true })
@@ -59,7 +61,10 @@ async function main() {
 
   const photos: PhotoManifest[] = []
 
-  console.log(`Found ${inputs.length} source images in ${sourceDir}`)
+  console.log(`Found ${inputs.length} selected source images in ${sourceDir}`)
+  if (includeList.size > 0) {
+    console.log(`Using ${includePath}`)
+  }
 
   for (const [index, input] of inputs.entries()) {
     console.log(`[${index + 1}/${inputs.length}] ${path.basename(input.path)}`)
@@ -168,6 +173,56 @@ async function readExistingManifest() {
   }
 }
 
+async function readIncludeList() {
+  try {
+    const contents = await readFile(includePath, 'utf8')
+    return new Set(
+      contents
+        .split(/\r?\n/)
+        .map((line) => line.replace(/#.*$/, '').trim())
+        .filter(Boolean)
+        .map(normalizeIncludeEntry),
+    )
+  } catch (error) {
+    if (error instanceof Error && 'code' in error && error.code === 'ENOENT') {
+      return new Set<string>()
+    }
+
+    throw error
+  }
+}
+
+function filterIncludedImages(
+  files: Awaited<ReturnType<typeof findImages>>,
+  includeList: Set<string>,
+) {
+  if (includeList.size === 0) {
+    return files
+  }
+
+  const selectedFiles = files.filter((file) => {
+    const relativePath = normalizeIncludeEntry(path.relative(sourceDir, file.path))
+    const fileName = normalizeIncludeEntry(path.basename(file.path))
+
+    return includeList.has(relativePath) || includeList.has(fileName)
+  })
+  const selectedKeys = new Set(
+    selectedFiles.flatMap((file) => [
+      normalizeIncludeEntry(path.relative(sourceDir, file.path)),
+      normalizeIncludeEntry(path.basename(file.path)),
+    ]),
+  )
+  const missingEntries = Array.from(includeList).filter(
+    (entry) => !selectedKeys.has(entry),
+  )
+
+  for (const entry of missingEntries) {
+    console.warn(`Include entry not found: ${entry}`)
+  }
+
+  return selectedFiles
+}
+
 async function findImages(dir: string) {
   const entries = await readdir(dir, { recursive: true, withFileTypes: true })
   const files = await Promise.all(
@@ -193,6 +248,10 @@ async function findImages(dir: string) {
 
 function publicUrl(fileName: string) {
   return fileName
+}
+
+function normalizeIncludeEntry(value: string) {
+  return value.split(path.sep).join('/').replace(/^\.\//, '').toLowerCase()
 }
 
 async function fileHasSize(filePath: string, expectedSize: number) {

@@ -16,6 +16,10 @@ by default, writes generated assets to ignored `public/photos`, and updates
 scrolling page and one original file copy for the lightbox. Re-running the
 processor is incremental: unchanged hash-named assets are reused.
 
+Only photos listed in `photos.include.txt` are published. Edit that file to add,
+remove, reorder, or temporarily comment out Lightroom exports before running the
+processor.
+
 ## Checks
 
 ```bash
@@ -40,6 +44,7 @@ GitHub Pages deploys `dist` through `.github/workflows/deploy.yml` and serves
 Production image assets should be uploaded to Cloudflare R2:
 
 ```bash
+nano photos.include.txt
 npm run photos:process
 npm run photos:upload
 ```
