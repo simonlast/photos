@@ -12,14 +12,10 @@ npm run photos:process
 npm run dev
 ```
 
-The default input folder is `/Users/simonlast/Pictures/Lightroom exports`.
-Generated image assets go to `public/photos`, and the app imports
-`src/data/photos.generated.json`.
-
-`photos.include.txt` controls which Lightroom exports are published. Each
-non-comment line is either a filename from `PHOTO_SOURCE_DIR` or a source-relative
-path. If the include file is missing or empty, the processor falls back to every
-image in the source directory.
+The default input folder is `/Users/simonlast/Pictures/Published`. That Finder
+folder is the publishing source of truth: put only the photos that should be live
+there. Generated image assets go to `public/photos`, and the app imports the
+internal generated manifest at `src/data/photos.generated.json`.
 
 ## Image Pipeline
 

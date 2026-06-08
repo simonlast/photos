@@ -10,15 +10,12 @@ npm run photos:process
 npm run dev
 ```
 
-The local photo processor reads `/Users/simonlast/Pictures/Lightroom exports`
-by default, writes generated assets to ignored `public/photos`, and updates
-`src/data/photos.generated.json`. Each photo gets one bounded AVIF for the
-scrolling page and one original file copy for the lightbox. Re-running the
-processor is incremental: unchanged hash-named assets are reused.
-
-Only photos listed in `photos.include.txt` are published. Edit that file to add,
-remove, reorder, or temporarily comment out Lightroom exports before running the
-processor.
+The local photo processor reads `/Users/simonlast/Pictures/Published` by
+default. Put only the photos you want live in that Finder folder, then run the
+processor. It writes generated assets to ignored `public/photos` and updates the
+internal manifest at `src/data/photos.generated.json`. Each photo gets one
+bounded AVIF for the scrolling page and one original file copy for the lightbox.
+Re-running the processor is incremental: unchanged hash-named assets are reused.
 
 ## Checks
 
@@ -44,7 +41,6 @@ GitHub Pages deploys `dist` through `.github/workflows/deploy.yml` and serves
 Production image assets should be uploaded to Cloudflare R2:
 
 ```bash
-nano photos.include.txt
 npm run photos:process
 npm run photos:upload
 ```

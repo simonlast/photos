@@ -1,4 +1,12 @@
 import { expect, test, type Locator } from '@playwright/test'
+import { readFileSync } from 'node:fs'
+
+const photos = JSON.parse(
+  readFileSync('src/data/photos.generated.json', 'utf8'),
+) as unknown[]
+const totalPhotos = photos.length
+const initialPhotoCount = Math.min(20, totalPhotos)
+const photoLoadBatchSize = 10
 
 test('renders the photo list and opens/closes the lightbox', async ({
   page,
@@ -7,8 +15,8 @@ test('renders the photo list and opens/closes the lightbox', async ({
   await expect(page.getByText('Photos')).toHaveCount(0)
   const list = page.getByLabel('Photo list')
   await expect(list).toBeVisible()
-  await expect(list).toHaveAttribute('data-loaded-count', '20')
-  await expect(list).toHaveAttribute('data-total-count', '43')
+  await expect(list).toHaveAttribute('data-loaded-count', String(initialPhotoCount))
+  await expect(list).toHaveAttribute('data-total-count', String(totalPhotos))
   await expect(page.locator('.app')).toHaveCSS(
     'background-color',
     'rgb(255, 255, 255)',
@@ -17,7 +25,9 @@ test('renders the photo list and opens/closes the lightbox', async ({
   const firstPhoto = page.getByRole('button', { name: /^Open / }).first()
   const firstImage = firstPhoto.locator('img')
   await expect(firstPhoto).toBeVisible()
-  await expect(page.getByRole('button', { name: /^Open / })).toHaveCount(20)
+  await expect(page.getByRole('button', { name: /^Open / })).toHaveCount(
+    initialPhotoCount,
+  )
   await expect(page.locator('.photo-date')).toHaveCount(0)
   await expectImageDecoded(firstImage)
   await expect
@@ -119,20 +129,25 @@ test('progressively loads more photos while scrolling', async ({ page }) => {
   await page.goto('/')
   const list = page.getByLabel('Photo list')
 
-  await expect(list).toHaveAttribute('data-loaded-count', '20')
-  await expect(page.getByRole('button', { name: /^Open / })).toHaveCount(20)
+  for (
+    let expectedCount = initialPhotoCount;
+    expectedCount <= totalPhotos;
+    expectedCount = Math.min(expectedCount + photoLoadBatchSize, totalPhotos)
+  ) {
+    await expect(list).toHaveAttribute(
+      'data-loaded-count',
+      String(expectedCount),
+    )
+    await expect(page.getByRole('button', { name: /^Open / })).toHaveCount(
+      expectedCount,
+    )
 
-  await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight))
-  await expect(list).toHaveAttribute('data-loaded-count', '30')
-  await expect(page.getByRole('button', { name: /^Open / })).toHaveCount(30)
+    if (expectedCount === totalPhotos) {
+      break
+    }
 
-  await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight))
-  await expect(list).toHaveAttribute('data-loaded-count', '40')
-  await expect(page.getByRole('button', { name: /^Open / })).toHaveCount(40)
-
-  await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight))
-  await expect(list).toHaveAttribute('data-loaded-count', '43')
-  await expect(page.getByRole('button', { name: /^Open / })).toHaveCount(43)
+    await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight))
+  }
 })
 
 function clamp(value: number, min: number, max: number) {

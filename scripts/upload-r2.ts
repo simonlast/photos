@@ -1,5 +1,5 @@
 import { createReadStream } from 'node:fs'
-import { readFile, readdir, stat } from 'node:fs/promises'
+import { readFile, stat } from 'node:fs/promises'
 import path from 'node:path'
 import { PutObjectCommand, S3Client } from '@aws-sdk/client-s3'
 import dotenv from 'dotenv'
@@ -8,6 +8,8 @@ dotenv.config({ path: '.envrc' })
 dotenv.config()
 
 const outputDir = process.env.PHOTO_OUTPUT_DIR ?? 'public/photos'
+const manifestPath =
+  process.env.PHOTO_MANIFEST_PATH ?? 'src/data/photos.generated.json'
 const bucket = requiredEnv('R2_BUCKET')
 const cloudflareApiToken = process.env.CLOUDFLARE_API_TOKEN
 const cloudflareAccountId = process.env.CLOUDFLARE_ACCOUNT_ID
@@ -27,8 +29,13 @@ type RemoteObject = {
   size: number
 }
 
+type PhotoManifest = {
+  display: { src: string }
+  full: { src: string }
+}
+
 async function main() {
-  const files = await listFiles(outputDir)
+  const files = await listManifestFiles()
   await ensureBucketExists()
   const remoteObjects = await listRemoteObjects()
   const uploadQueue = files.filter((file) => {
@@ -49,31 +56,27 @@ async function main() {
   console.log(`Uploaded ${uploadQueue.length} changed files to ${bucket}`)
 }
 
-async function listFiles(dir: string): Promise<LocalFile[]> {
-  const entries = await readdir(dir, { withFileTypes: true })
-  const files = await Promise.all(
-    entries.map(async (entry) => {
-      const entryPath = path.join(dir, entry.name)
-      if (entry.isDirectory()) {
-        return listFiles(entryPath)
-      }
-
-      if (entry.isFile()) {
-        const fileStat = await stat(entryPath)
-        return [
-          {
-            path: entryPath,
-            key: path.relative(outputDir, entryPath).split(path.sep).join('/'),
-            size: fileStat.size,
-          },
-        ]
-      }
-
-      return []
-    }),
+async function listManifestFiles(): Promise<LocalFile[]> {
+  const manifest = JSON.parse(
+    await readFile(manifestPath, 'utf8'),
+  ) as PhotoManifest[]
+  const keys = Array.from(
+    new Set(
+      manifest.flatMap((photo) => [
+        normalizeManifestSrc(photo.display.src),
+        normalizeManifestSrc(photo.full.src),
+      ]),
+    ),
   )
 
-  return files.flat()
+  return Promise.all(
+    keys.map(async (key) => {
+      const filePath = path.join(outputDir, key)
+      const fileStat = await stat(filePath)
+
+      return { path: filePath, key, size: fileStat.size }
+    }),
+  )
 }
 
 async function ensureBucketExists() {
@@ -203,6 +206,10 @@ async function cloudflareErrorMessage(response: Response) {
 
 function encodeObjectKey(key: string) {
   return key.split('/').map(encodeURIComponent).join('/')
+}
+
+function normalizeManifestSrc(src: string) {
+  return src.replace(/^\/+/, '')
 }
 
 async function runWithConcurrency<T>(
