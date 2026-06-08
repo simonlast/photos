@@ -10,9 +10,42 @@ const photos = photosJson as Photo[]
 const photoBaseUrl = trimTrailingSlash(
   import.meta.env.VITE_PHOTO_BASE_URL || '/photos',
 )
+const INITIAL_PHOTO_COUNT = 20
+const PHOTO_LOAD_BATCH_SIZE = 10
+
+type LightboxZoomLevel = {
+  panAreaSize: { x: number; y: number } | null
+  elementSize: { x: number; y: number } | null
+  initial: number
+}
 
 function App() {
+  const [visibleCount, setVisibleCount] = useState(() =>
+    Math.min(INITIAL_PHOTO_COUNT, photos.length),
+  )
+  const sentinelRef = useRef<HTMLDivElement | null>(null)
   const lightboxRef = useRef<PhotoSwipeLightbox | null>(null)
+
+  useEffect(() => {
+    const sentinel = sentinelRef.current
+    if (!sentinel || visibleCount >= photos.length) {
+      return
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          setVisibleCount((count) =>
+            Math.min(count + PHOTO_LOAD_BATCH_SIZE, photos.length),
+          )
+        }
+      },
+      { rootMargin: '3000px 0px' },
+    )
+
+    observer.observe(sentinel)
+    return () => observer.disconnect()
+  }, [visibleCount])
 
   useEffect(() => {
     const closeActiveLightbox = () => {
@@ -20,8 +53,8 @@ function App() {
       window.setTimeout(() => lightboxRef.current?.pswp?.close(), 1_000)
     }
 
-    const handleGuardedLightboxAction: ActionFn = (point, originalEvent) => {
-      if (clickIsInsideActiveLightboxImage(originalEvent)) {
+    const handleLightboxTap: ActionFn = (point, originalEvent) => {
+      if (eventHitsActiveLightboxImage(originalEvent)) {
         lightboxRef.current?.pswp?.currSlide?.toggleZoom(point)
         return
       }
@@ -35,20 +68,21 @@ function App() {
         width: photo.full.width,
         height: photo.full.height,
         alt: photo.alt,
-        msrc: resolvePhotoUrl(photo.sources[0]?.jpeg ?? photo.full.src),
+        msrc: resolvePhotoUrl(photo.display.src),
       })),
-      bgClickAction: handleGuardedLightboxAction,
+      bgClickAction: 'close',
       arrowNext: false,
       arrowPrev: false,
       close: false,
       counter: false,
+      clickToCloseNonZoomable: false,
       escKey: true,
       imageClickAction: 'zoom',
       initialZoomLevel: 'fit',
       padding: { top: 12, right: 12, bottom: 12, left: 12 },
-      secondaryZoomLevel: 1,
+      secondaryZoomLevel: coverViewportZoomLevel,
       showHideAnimationType: 'none',
-      tapAction: handleGuardedLightboxAction,
+      tapAction: handleLightboxTap,
       zoom: false,
       pswpModule: () => import('photoswipe'),
     })
@@ -75,7 +109,7 @@ function App() {
         return
       }
 
-      if (clickIsInsideActiveLightboxImage(event)) {
+      if (eventHitsActiveLightboxImage(event)) {
         return
       }
 
@@ -85,14 +119,14 @@ function App() {
     }
 
     document.addEventListener('keydown', handleKeyDown, true)
-    document.addEventListener('click', handleLightboxClick, true)
+    document.addEventListener('click', handleLightboxClick)
 
     lightbox.init()
     lightboxRef.current = lightbox
 
     return () => {
       document.removeEventListener('keydown', handleKeyDown, true)
-      document.removeEventListener('click', handleLightboxClick, true)
+      document.removeEventListener('click', handleLightboxClick)
       lightbox.destroy()
       lightboxRef.current = null
       document.documentElement.classList.remove('lightbox-open')
@@ -113,8 +147,13 @@ function App() {
 
   return (
     <main className="app">
-      <section className="photo-list" aria-label="Photo list">
-        {photos.map((photo, index) => (
+      <section
+        className="photo-list"
+        aria-label="Photo list"
+        data-loaded-count={visibleCount}
+        data-total-count={photos.length}
+      >
+        {photos.slice(0, visibleCount).map((photo, index) => (
           <PhotoTile
             key={photo.id}
             photo={photo}
@@ -122,25 +161,60 @@ function App() {
             onOpen={openPhoto}
           />
         ))}
+        {visibleCount < photos.length ? (
+          <div ref={sentinelRef} className="sentinel" aria-hidden="true" />
+        ) : null}
       </section>
     </main>
   )
 }
 
-function clickIsInsideActiveLightboxImage(event: PointerEvent) {
-  const activeImage = document.querySelector(
-    '.pswp__item[aria-hidden="false"] .pswp__img:not(.pswp__img--placeholder)',
-  )
-
-  if (!activeImage) {
-    return false
+function eventHitsActiveLightboxImage(event: MouseEvent | PointerEvent) {
+  const target = event.target
+  if (target instanceof Element && target.classList.contains('pswp__img')) {
+    return true
   }
 
-  return clickIsInsideElement(event, activeImage)
+  return activeLightboxImages().some((image) =>
+    pointIsInsideElement(event, image),
+  )
 }
 
-function clickIsInsideElement(event: MouseEvent | PointerEvent, element: Element) {
+function coverViewportZoomLevel(zoomLevel: LightboxZoomLevel) {
+  if (!zoomLevel.panAreaSize || !zoomLevel.elementSize) {
+    return 1
+  }
+
+  const fitWidth = zoomLevel.elementSize.x * zoomLevel.initial
+  const fitHeight = zoomLevel.elementSize.y * zoomLevel.initial
+  if (fitWidth === 0 || fitHeight === 0) {
+    return 1
+  }
+
+  const coverScale = Math.max(
+    window.innerWidth / fitWidth,
+    window.innerHeight / fitHeight,
+  )
+
+  return Math.max(1, zoomLevel.initial * coverScale)
+}
+
+function activeLightboxImages() {
+  return Array.from(
+    document.querySelectorAll(
+      '.pswp__item[aria-hidden="false"] .pswp__img',
+    ),
+  )
+}
+
+function pointIsInsideElement(
+  event: MouseEvent | PointerEvent,
+  element: Element,
+) {
   const rect = element.getBoundingClientRect()
+  if (rect.width === 0 || rect.height === 0) {
+    return false
+  }
 
   return (
     event.clientX >= rect.left &&
@@ -162,16 +236,7 @@ function PhotoTile({ photo, index, onOpen }: PhotoTileProps) {
     photo.aspectRatio < 0.85
       ? '(max-width: 820px) calc(100vw - 36px), 720px'
       : '(max-width: 1180px) calc(100vw - 36px), 1080px'
-  const avifSrcSet = photo.sources
-    .map((source) => `${resolvePhotoUrl(source.avif)} ${source.width}w`)
-    .join(', ')
-  const webpSrcSet = photo.sources
-    .map((source) => `${resolvePhotoUrl(source.webp)} ${source.width}w`)
-    .join(', ')
-  const jpegSrcSet = photo.sources
-    .map((source) => `${resolvePhotoUrl(source.jpeg)} ${source.width}w`)
-    .join(', ')
-  const fallback = resolvePhotoUrl(photo.sources.at(-1)?.jpeg ?? photo.full.src)
+  const displaySrc = resolvePhotoUrl(photo.display.src)
 
   return (
     <figure className="photo-item">
@@ -187,23 +252,18 @@ function PhotoTile({ photo, index, onOpen }: PhotoTileProps) {
         aria-label={`Open ${photo.alt}`}
         onClick={() => onOpen(index)}
       >
-        <picture>
-          <source type="image/avif" srcSet={avifSrcSet} sizes={sizes} />
-          <source type="image/webp" srcSet={webpSrcSet} sizes={sizes} />
-          <img
-            className={`photo-card__image${loaded ? ' is-loaded' : ''}`}
-            src={fallback}
-            srcSet={jpegSrcSet}
-            sizes={sizes}
-            width={photo.width}
-            height={photo.height}
-            alt={photo.alt}
-            loading={index < 3 ? 'eager' : 'lazy'}
-            fetchPriority={index === 0 ? 'high' : 'auto'}
-            decoding="async"
-            onLoad={() => setLoaded(true)}
-          />
-        </picture>
+        <img
+          className={`photo-card__image${loaded ? ' is-loaded' : ''}`}
+          src={displaySrc}
+          sizes={sizes}
+          width={photo.display.width}
+          height={photo.display.height}
+          alt={photo.alt}
+          loading={index < 3 ? 'eager' : 'lazy'}
+          fetchPriority={index === 0 ? 'high' : 'auto'}
+          decoding="async"
+          onLoad={() => setLoaded(true)}
+        />
       </button>
     </figure>
   )

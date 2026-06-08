@@ -12,7 +12,8 @@ npm run dev
 
 The local photo processor reads `/Users/simonlast/Pictures/Lightroom exports`
 by default, writes generated assets to ignored `public/photos`, and updates
-`src/data/photos.generated.json`.
+`src/data/photos.generated.json`. Each photo gets one bounded AVIF for the
+scrolling page and one original file copy for the lightbox.
 
 ## Checks
 

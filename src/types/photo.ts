@@ -1,10 +1,3 @@
-export type PhotoSource = {
-  width: number
-  avif: string
-  webp: string
-  jpeg: string
-}
-
 export type Photo = {
   id: string
   title: string
@@ -14,7 +7,12 @@ export type Photo = {
   width: number
   height: number
   aspectRatio: number
-  sources: PhotoSource[]
+  display: {
+    src: string
+    width: number
+    height: number
+    bytes: number
+  }
   full: {
     src: string
     width: number

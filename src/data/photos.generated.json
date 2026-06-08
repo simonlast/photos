@@ -8,31 +8,17 @@
     "width": 4000,
     "height": 6000,
     "aspectRatio": 0.6666666666666666,
-    "sources": [
-      {
-        "width": 420,
-        "avif": "r0000509-2e66e131e890-420.avif",
-        "webp": "r0000509-2e66e131e890-420.webp",
-        "jpeg": "r0000509-2e66e131e890-420.jpg"
-      },
-      {
-        "width": 840,
-        "avif": "r0000509-2e66e131e890-840.avif",
-        "webp": "r0000509-2e66e131e890-840.webp",
-        "jpeg": "r0000509-2e66e131e890-840.jpg"
-      },
-      {
-        "width": 1260,
-        "avif": "r0000509-2e66e131e890-1260.avif",
-        "webp": "r0000509-2e66e131e890-1260.webp",
-        "jpeg": "r0000509-2e66e131e890-1260.jpg"
-      }
-    ],
+    "display": {
+      "src": "r0000509-2e66e131e890-display.avif",
+      "width": 1200,
+      "height": 1800,
+      "bytes": 36506
+    },
     "full": {
       "src": "r0000509-2e66e131e890-full.jpg",
       "width": 4000,
       "height": 6000,
-      "bytes": 2608409
+      "bytes": 10539870
     }
   },
   {
@@ -44,31 +30,17 @@
     "width": 4000,
     "height": 6000,
     "aspectRatio": 0.6666666666666666,
-    "sources": [
-      {
-        "width": 420,
-        "avif": "r0000507-389e253a50a7-420.avif",
-        "webp": "r0000507-389e253a50a7-420.webp",
-        "jpeg": "r0000507-389e253a50a7-420.jpg"
-      },
-      {
-        "width": 840,
-        "avif": "r0000507-389e253a50a7-840.avif",
-        "webp": "r0000507-389e253a50a7-840.webp",
-        "jpeg": "r0000507-389e253a50a7-840.jpg"
-      },
-      {
-        "width": 1260,
-        "avif": "r0000507-389e253a50a7-1260.avif",
-        "webp": "r0000507-389e253a50a7-1260.webp",
-        "jpeg": "r0000507-389e253a50a7-1260.jpg"
-      }
-    ],
+    "display": {
+      "src": "r0000507-389e253a50a7-display.avif",
+      "width": 1200,
+      "height": 1800,
+      "bytes": 55544
+    },
     "full": {
       "src": "r0000507-389e253a50a7-full.jpg",
       "width": 4000,
       "height": 6000,
-      "bytes": 2816214
+      "bytes": 11064285
     }
   },
   {
@@ -80,31 +52,17 @@
     "width": 6000,
     "height": 4000,
     "aspectRatio": 1.5,
-    "sources": [
-      {
-        "width": 420,
-        "avif": "r0000503-a00dfd263a56-420.avif",
-        "webp": "r0000503-a00dfd263a56-420.webp",
-        "jpeg": "r0000503-a00dfd263a56-420.jpg"
-      },
-      {
-        "width": 840,
-        "avif": "r0000503-a00dfd263a56-840.avif",
-        "webp": "r0000503-a00dfd263a56-840.webp",
-        "jpeg": "r0000503-a00dfd263a56-840.jpg"
-      },
-      {
-        "width": 1260,
-        "avif": "r0000503-a00dfd263a56-1260.avif",
-        "webp": "r0000503-a00dfd263a56-1260.webp",
-        "jpeg": "r0000503-a00dfd263a56-1260.jpg"
-      }
-    ],
+    "display": {
+      "src": "r0000503-a00dfd263a56-display.avif",
+      "width": 2160,
+      "height": 1440,
+      "bytes": 47466
+    },
     "full": {
       "src": "r0000503-a00dfd263a56-full.jpg",
       "width": 6000,
       "height": 4000,
-      "bytes": 2454351
+      "bytes": 11078172
     }
   },
   {
@@ -116,31 +74,17 @@
     "width": 6000,
     "height": 4000,
     "aspectRatio": 1.5,
-    "sources": [
-      {
-        "width": 420,
-        "avif": "r0000500-69ea33a4a5a0-420.avif",
-        "webp": "r0000500-69ea33a4a5a0-420.webp",
-        "jpeg": "r0000500-69ea33a4a5a0-420.jpg"
-      },
-      {
-        "width": 840,
-        "avif": "r0000500-69ea33a4a5a0-840.avif",
-        "webp": "r0000500-69ea33a4a5a0-840.webp",
-        "jpeg": "r0000500-69ea33a4a5a0-840.jpg"
-      },
-      {
-        "width": 1260,
-        "avif": "r0000500-69ea33a4a5a0-1260.avif",
-        "webp": "r0000500-69ea33a4a5a0-1260.webp",
-        "jpeg": "r0000500-69ea33a4a5a0-1260.jpg"
-      }
-    ],
+    "display": {
+      "src": "r0000500-69ea33a4a5a0-display.avif",
+      "width": 2160,
+      "height": 1440,
+      "bytes": 186283
+    },
     "full": {
       "src": "r0000500-69ea33a4a5a0-full.jpg",
       "width": 6000,
       "height": 4000,
-      "bytes": 3322925
+      "bytes": 12872198
     }
   },
   {
@@ -152,31 +96,17 @@
     "width": 6000,
     "height": 4000,
     "aspectRatio": 1.5,
-    "sources": [
-      {
-        "width": 420,
-        "avif": "r0000506-9d887817f990-420.avif",
-        "webp": "r0000506-9d887817f990-420.webp",
-        "jpeg": "r0000506-9d887817f990-420.jpg"
-      },
-      {
-        "width": 840,
-        "avif": "r0000506-9d887817f990-840.avif",
-        "webp": "r0000506-9d887817f990-840.webp",
-        "jpeg": "r0000506-9d887817f990-840.jpg"
-      },
-      {
-        "width": 1260,
-        "avif": "r0000506-9d887817f990-1260.avif",
-        "webp": "r0000506-9d887817f990-1260.webp",
-        "jpeg": "r0000506-9d887817f990-1260.jpg"
-      }
-    ],
+    "display": {
+      "src": "r0000506-9d887817f990-display.avif",
+      "width": 2160,
+      "height": 1440,
+      "bytes": 45505
+    },
     "full": {
       "src": "r0000506-9d887817f990-full.jpg",
       "width": 6000,
       "height": 4000,
-      "bytes": 1721883
+      "bytes": 8624566
     }
   },
   {
@@ -188,31 +118,17 @@
     "width": 6000,
     "height": 4000,
     "aspectRatio": 1.5,
-    "sources": [
-      {
-        "width": 420,
-        "avif": "r0000497-61595769602f-420.avif",
-        "webp": "r0000497-61595769602f-420.webp",
-        "jpeg": "r0000497-61595769602f-420.jpg"
-      },
-      {
-        "width": 840,
-        "avif": "r0000497-61595769602f-840.avif",
-        "webp": "r0000497-61595769602f-840.webp",
-        "jpeg": "r0000497-61595769602f-840.jpg"
-      },
-      {
-        "width": 1260,
-        "avif": "r0000497-61595769602f-1260.avif",
-        "webp": "r0000497-61595769602f-1260.webp",
-        "jpeg": "r0000497-61595769602f-1260.jpg"
-      }
-    ],
+    "display": {
+      "src": "r0000497-61595769602f-display.avif",
+      "width": 2160,
+      "height": 1440,
+      "bytes": 99746
+    },
     "full": {
       "src": "r0000497-61595769602f-full.jpg",
       "width": 6000,
       "height": 4000,
-      "bytes": 3026879
+      "bytes": 12011126
     }
   },
   {
@@ -224,31 +140,17 @@
     "width": 5956,
     "height": 3971,
     "aspectRatio": 1.499874087131705,
-    "sources": [
-      {
-        "width": 420,
-        "avif": "r0000495-edbeecc65129-420.avif",
-        "webp": "r0000495-edbeecc65129-420.webp",
-        "jpeg": "r0000495-edbeecc65129-420.jpg"
-      },
-      {
-        "width": 840,
-        "avif": "r0000495-edbeecc65129-840.avif",
-        "webp": "r0000495-edbeecc65129-840.webp",
-        "jpeg": "r0000495-edbeecc65129-840.jpg"
-      },
-      {
-        "width": 1260,
-        "avif": "r0000495-edbeecc65129-1260.avif",
-        "webp": "r0000495-edbeecc65129-1260.webp",
-        "jpeg": "r0000495-edbeecc65129-1260.jpg"
-      }
-    ],
+    "display": {
+      "src": "r0000495-edbeecc65129-display.avif",
+      "width": 2160,
+      "height": 1440,
+      "bytes": 106783
+    },
     "full": {
       "src": "r0000495-edbeecc65129-full.jpg",
       "width": 5956,
       "height": 3971,
-      "bytes": 2773606
+      "bytes": 10864924
     }
   },
   {
@@ -260,31 +162,17 @@
     "width": 4000,
     "height": 6000,
     "aspectRatio": 0.6666666666666666,
-    "sources": [
-      {
-        "width": 420,
-        "avif": "r0000475-304b45d7778c-420.avif",
-        "webp": "r0000475-304b45d7778c-420.webp",
-        "jpeg": "r0000475-304b45d7778c-420.jpg"
-      },
-      {
-        "width": 840,
-        "avif": "r0000475-304b45d7778c-840.avif",
-        "webp": "r0000475-304b45d7778c-840.webp",
-        "jpeg": "r0000475-304b45d7778c-840.jpg"
-      },
-      {
-        "width": 1260,
-        "avif": "r0000475-304b45d7778c-1260.avif",
-        "webp": "r0000475-304b45d7778c-1260.webp",
-        "jpeg": "r0000475-304b45d7778c-1260.jpg"
-      }
-    ],
+    "display": {
+      "src": "r0000475-304b45d7778c-display.avif",
+      "width": 1200,
+      "height": 1800,
+      "bytes": 414183
+    },
     "full": {
       "src": "r0000475-304b45d7778c-full.jpg",
       "width": 4000,
       "height": 6000,
-      "bytes": 5009051
+      "bytes": 17153212
     }
   },
   {
@@ -296,31 +184,17 @@
     "width": 4000,
     "height": 6000,
     "aspectRatio": 0.6666666666666666,
-    "sources": [
-      {
-        "width": 420,
-        "avif": "r0000487-7adfa5ee9447-420.avif",
-        "webp": "r0000487-7adfa5ee9447-420.webp",
-        "jpeg": "r0000487-7adfa5ee9447-420.jpg"
-      },
-      {
-        "width": 840,
-        "avif": "r0000487-7adfa5ee9447-840.avif",
-        "webp": "r0000487-7adfa5ee9447-840.webp",
-        "jpeg": "r0000487-7adfa5ee9447-840.jpg"
-      },
-      {
-        "width": 1260,
-        "avif": "r0000487-7adfa5ee9447-1260.avif",
-        "webp": "r0000487-7adfa5ee9447-1260.webp",
-        "jpeg": "r0000487-7adfa5ee9447-1260.jpg"
-      }
-    ],
+    "display": {
+      "src": "r0000487-7adfa5ee9447-display.avif",
+      "width": 1200,
+      "height": 1800,
+      "bytes": 175183
+    },
     "full": {
       "src": "r0000487-7adfa5ee9447-full.jpg",
       "width": 4000,
       "height": 6000,
-      "bytes": 3598496
+      "bytes": 13575619
     }
   },
   {
@@ -332,31 +206,17 @@
     "width": 3822,
     "height": 5733,
     "aspectRatio": 0.6666666666666666,
-    "sources": [
-      {
-        "width": 420,
-        "avif": "r0000490-1ecb4cf22007-420.avif",
-        "webp": "r0000490-1ecb4cf22007-420.webp",
-        "jpeg": "r0000490-1ecb4cf22007-420.jpg"
-      },
-      {
-        "width": 840,
-        "avif": "r0000490-1ecb4cf22007-840.avif",
-        "webp": "r0000490-1ecb4cf22007-840.webp",
-        "jpeg": "r0000490-1ecb4cf22007-840.jpg"
-      },
-      {
-        "width": 1260,
-        "avif": "r0000490-1ecb4cf22007-1260.avif",
-        "webp": "r0000490-1ecb4cf22007-1260.webp",
-        "jpeg": "r0000490-1ecb4cf22007-1260.jpg"
-      }
-    ],
+    "display": {
+      "src": "r0000490-1ecb4cf22007-display.avif",
+      "width": 1200,
+      "height": 1800,
+      "bytes": 160378
+    },
     "full": {
       "src": "r0000490-1ecb4cf22007-full.jpg",
       "width": 3822,
       "height": 5733,
-      "bytes": 2833525
+      "bytes": 10527450
     }
   },
   {
@@ -368,31 +228,17 @@
     "width": 5953,
     "height": 3969,
     "aspectRatio": 1.4998740236835475,
-    "sources": [
-      {
-        "width": 420,
-        "avif": "r0000482-9a5694fc66c8-420.avif",
-        "webp": "r0000482-9a5694fc66c8-420.webp",
-        "jpeg": "r0000482-9a5694fc66c8-420.jpg"
-      },
-      {
-        "width": 840,
-        "avif": "r0000482-9a5694fc66c8-840.avif",
-        "webp": "r0000482-9a5694fc66c8-840.webp",
-        "jpeg": "r0000482-9a5694fc66c8-840.jpg"
-      },
-      {
-        "width": 1260,
-        "avif": "r0000482-9a5694fc66c8-1260.avif",
-        "webp": "r0000482-9a5694fc66c8-1260.webp",
-        "jpeg": "r0000482-9a5694fc66c8-1260.jpg"
-      }
-    ],
+    "display": {
+      "src": "r0000482-9a5694fc66c8-display.avif",
+      "width": 2160,
+      "height": 1440,
+      "bytes": 178219
+    },
     "full": {
       "src": "r0000482-9a5694fc66c8-full.jpg",
       "width": 5953,
       "height": 3969,
-      "bytes": 3570470
+      "bytes": 12595585
     }
   },
   {
@@ -404,31 +250,17 @@
     "width": 4000,
     "height": 6000,
     "aspectRatio": 0.6666666666666666,
-    "sources": [
-      {
-        "width": 420,
-        "avif": "r0000462-4b915eaa7ca7-420.avif",
-        "webp": "r0000462-4b915eaa7ca7-420.webp",
-        "jpeg": "r0000462-4b915eaa7ca7-420.jpg"
-      },
-      {
-        "width": 840,
-        "avif": "r0000462-4b915eaa7ca7-840.avif",
-        "webp": "r0000462-4b915eaa7ca7-840.webp",
-        "jpeg": "r0000462-4b915eaa7ca7-840.jpg"
-      },
-      {
-        "width": 1260,
-        "avif": "r0000462-4b915eaa7ca7-1260.avif",
-        "webp": "r0000462-4b915eaa7ca7-1260.webp",
-        "jpeg": "r0000462-4b915eaa7ca7-1260.jpg"
-      }
-    ],
+    "display": {
+      "src": "r0000462-4b915eaa7ca7-display.avif",
+      "width": 1200,
+      "height": 1800,
+      "bytes": 159298
+    },
     "full": {
       "src": "r0000462-4b915eaa7ca7-full.jpg",
       "width": 4000,
       "height": 6000,
-      "bytes": 3600259
+      "bytes": 13608256
     }
   },
   {
@@ -440,31 +272,17 @@
     "width": 5811,
     "height": 3874,
     "aspectRatio": 1.5,
-    "sources": [
-      {
-        "width": 420,
-        "avif": "r0000467-032313d6ca7e-420.avif",
-        "webp": "r0000467-032313d6ca7e-420.webp",
-        "jpeg": "r0000467-032313d6ca7e-420.jpg"
-      },
-      {
-        "width": 840,
-        "avif": "r0000467-032313d6ca7e-840.avif",
-        "webp": "r0000467-032313d6ca7e-840.webp",
-        "jpeg": "r0000467-032313d6ca7e-840.jpg"
-      },
-      {
-        "width": 1260,
-        "avif": "r0000467-032313d6ca7e-1260.avif",
-        "webp": "r0000467-032313d6ca7e-1260.webp",
-        "jpeg": "r0000467-032313d6ca7e-1260.jpg"
-      }
-    ],
+    "display": {
+      "src": "r0000467-032313d6ca7e-display.avif",
+      "width": 2160,
+      "height": 1440,
+      "bytes": 264802
+    },
     "full": {
       "src": "r0000467-032313d6ca7e-full.jpg",
       "width": 5811,
       "height": 3874,
-      "bytes": 3631236
+      "bytes": 11900566
     }
   },
   {
@@ -476,31 +294,17 @@
     "width": 6000,
     "height": 4000,
     "aspectRatio": 1.5,
-    "sources": [
-      {
-        "width": 420,
-        "avif": "r0000463-db1f253dfc92-420.avif",
-        "webp": "r0000463-db1f253dfc92-420.webp",
-        "jpeg": "r0000463-db1f253dfc92-420.jpg"
-      },
-      {
-        "width": 840,
-        "avif": "r0000463-db1f253dfc92-840.avif",
-        "webp": "r0000463-db1f253dfc92-840.webp",
-        "jpeg": "r0000463-db1f253dfc92-840.jpg"
-      },
-      {
-        "width": 1260,
-        "avif": "r0000463-db1f253dfc92-1260.avif",
-        "webp": "r0000463-db1f253dfc92-1260.webp",
-        "jpeg": "r0000463-db1f253dfc92-1260.jpg"
-      }
-    ],
+    "display": {
+      "src": "r0000463-db1f253dfc92-display.avif",
+      "width": 2160,
+      "height": 1440,
+      "bytes": 77670
+    },
     "full": {
       "src": "r0000463-db1f253dfc92-full.jpg",
       "width": 6000,
       "height": 4000,
-      "bytes": 2348891
+      "bytes": 10417857
     }
   },
   {
@@ -512,31 +316,17 @@
     "width": 4000,
     "height": 6000,
     "aspectRatio": 0.6666666666666666,
-    "sources": [
-      {
-        "width": 420,
-        "avif": "r0000461-aef840b125dc-420.avif",
-        "webp": "r0000461-aef840b125dc-420.webp",
-        "jpeg": "r0000461-aef840b125dc-420.jpg"
-      },
-      {
-        "width": 840,
-        "avif": "r0000461-aef840b125dc-840.avif",
-        "webp": "r0000461-aef840b125dc-840.webp",
-        "jpeg": "r0000461-aef840b125dc-840.jpg"
-      },
-      {
-        "width": 1260,
-        "avif": "r0000461-aef840b125dc-1260.avif",
-        "webp": "r0000461-aef840b125dc-1260.webp",
-        "jpeg": "r0000461-aef840b125dc-1260.jpg"
-      }
-    ],
+    "display": {
+      "src": "r0000461-aef840b125dc-display.avif",
+      "width": 1200,
+      "height": 1800,
+      "bytes": 367751
+    },
     "full": {
       "src": "r0000461-aef840b125dc-full.jpg",
       "width": 4000,
       "height": 6000,
-      "bytes": 4691866
+      "bytes": 15268212
     }
   },
   {
@@ -548,31 +338,17 @@
     "width": 6000,
     "height": 4000,
     "aspectRatio": 1.5,
-    "sources": [
-      {
-        "width": 420,
-        "avif": "r0000456-18ce8e8db477-420.avif",
-        "webp": "r0000456-18ce8e8db477-420.webp",
-        "jpeg": "r0000456-18ce8e8db477-420.jpg"
-      },
-      {
-        "width": 840,
-        "avif": "r0000456-18ce8e8db477-840.avif",
-        "webp": "r0000456-18ce8e8db477-840.webp",
-        "jpeg": "r0000456-18ce8e8db477-840.jpg"
-      },
-      {
-        "width": 1260,
-        "avif": "r0000456-18ce8e8db477-1260.avif",
-        "webp": "r0000456-18ce8e8db477-1260.webp",
-        "jpeg": "r0000456-18ce8e8db477-1260.jpg"
-      }
-    ],
+    "display": {
+      "src": "r0000456-18ce8e8db477-display.avif",
+      "width": 2160,
+      "height": 1440,
+      "bytes": 188565
+    },
     "full": {
       "src": "r0000456-18ce8e8db477-full.jpg",
       "width": 6000,
       "height": 4000,
-      "bytes": 3629996
+      "bytes": 13125122
     }
   },
   {
@@ -584,31 +360,17 @@
     "width": 4000,
     "height": 6000,
     "aspectRatio": 0.6666666666666666,
-    "sources": [
-      {
-        "width": 420,
-        "avif": "r0000460-25ffd26b318d-420.avif",
-        "webp": "r0000460-25ffd26b318d-420.webp",
-        "jpeg": "r0000460-25ffd26b318d-420.jpg"
-      },
-      {
-        "width": 840,
-        "avif": "r0000460-25ffd26b318d-840.avif",
-        "webp": "r0000460-25ffd26b318d-840.webp",
-        "jpeg": "r0000460-25ffd26b318d-840.jpg"
-      },
-      {
-        "width": 1260,
-        "avif": "r0000460-25ffd26b318d-1260.avif",
-        "webp": "r0000460-25ffd26b318d-1260.webp",
-        "jpeg": "r0000460-25ffd26b318d-1260.jpg"
-      }
-    ],
+    "display": {
+      "src": "r0000460-25ffd26b318d-display.avif",
+      "width": 1200,
+      "height": 1800,
+      "bytes": 121554
+    },
     "full": {
       "src": "r0000460-25ffd26b318d-full.jpg",
       "width": 4000,
       "height": 6000,
-      "bytes": 2555959
+      "bytes": 10519775
     }
   },
   {
@@ -620,31 +382,17 @@
     "width": 4000,
     "height": 6000,
     "aspectRatio": 0.6666666666666666,
-    "sources": [
-      {
-        "width": 420,
-        "avif": "r0000451-9ced5caabfb5-420.avif",
-        "webp": "r0000451-9ced5caabfb5-420.webp",
-        "jpeg": "r0000451-9ced5caabfb5-420.jpg"
-      },
-      {
-        "width": 840,
-        "avif": "r0000451-9ced5caabfb5-840.avif",
-        "webp": "r0000451-9ced5caabfb5-840.webp",
-        "jpeg": "r0000451-9ced5caabfb5-840.jpg"
-      },
-      {
-        "width": 1260,
-        "avif": "r0000451-9ced5caabfb5-1260.avif",
-        "webp": "r0000451-9ced5caabfb5-1260.webp",
-        "jpeg": "r0000451-9ced5caabfb5-1260.jpg"
-      }
-    ],
+    "display": {
+      "src": "r0000451-9ced5caabfb5-display.avif",
+      "width": 1200,
+      "height": 1800,
+      "bytes": 43601
+    },
     "full": {
       "src": "r0000451-9ced5caabfb5-full.jpg",
       "width": 4000,
       "height": 6000,
-      "bytes": 2851069
+      "bytes": 11127689
     }
   },
   {
@@ -656,31 +404,17 @@
     "width": 4000,
     "height": 6000,
     "aspectRatio": 0.6666666666666666,
-    "sources": [
-      {
-        "width": 420,
-        "avif": "r0000452-dd8f075b3f7c-420.avif",
-        "webp": "r0000452-dd8f075b3f7c-420.webp",
-        "jpeg": "r0000452-dd8f075b3f7c-420.jpg"
-      },
-      {
-        "width": 840,
-        "avif": "r0000452-dd8f075b3f7c-840.avif",
-        "webp": "r0000452-dd8f075b3f7c-840.webp",
-        "jpeg": "r0000452-dd8f075b3f7c-840.jpg"
-      },
-      {
-        "width": 1260,
-        "avif": "r0000452-dd8f075b3f7c-1260.avif",
-        "webp": "r0000452-dd8f075b3f7c-1260.webp",
-        "jpeg": "r0000452-dd8f075b3f7c-1260.jpg"
-      }
-    ],
+    "display": {
+      "src": "r0000452-dd8f075b3f7c-display.avif",
+      "width": 1200,
+      "height": 1800,
+      "bytes": 237505
+    },
     "full": {
       "src": "r0000452-dd8f075b3f7c-full.jpg",
       "width": 4000,
       "height": 6000,
-      "bytes": 3667709
+      "bytes": 12744042
     }
   },
   {
@@ -692,31 +426,17 @@
     "width": 6000,
     "height": 4000,
     "aspectRatio": 1.5,
-    "sources": [
-      {
-        "width": 420,
-        "avif": "r0000458-cf1418016a8d-420.avif",
-        "webp": "r0000458-cf1418016a8d-420.webp",
-        "jpeg": "r0000458-cf1418016a8d-420.jpg"
-      },
-      {
-        "width": 840,
-        "avif": "r0000458-cf1418016a8d-840.avif",
-        "webp": "r0000458-cf1418016a8d-840.webp",
-        "jpeg": "r0000458-cf1418016a8d-840.jpg"
-      },
-      {
-        "width": 1260,
-        "avif": "r0000458-cf1418016a8d-1260.avif",
-        "webp": "r0000458-cf1418016a8d-1260.webp",
-        "jpeg": "r0000458-cf1418016a8d-1260.jpg"
-      }
-    ],
+    "display": {
+      "src": "r0000458-cf1418016a8d-display.avif",
+      "width": 2160,
+      "height": 1440,
+      "bytes": 416923
+    },
     "full": {
       "src": "r0000458-cf1418016a8d-full.jpg",
       "width": 6000,
       "height": 4000,
-      "bytes": 4679224
+      "bytes": 15636125
     }
   },
   {
@@ -728,31 +448,17 @@
     "width": 6000,
     "height": 3769,
     "aspectRatio": 1.5919342000530645,
-    "sources": [
-      {
-        "width": 420,
-        "avif": "r0000457-7bd0019641a2-420.avif",
-        "webp": "r0000457-7bd0019641a2-420.webp",
-        "jpeg": "r0000457-7bd0019641a2-420.jpg"
-      },
-      {
-        "width": 840,
-        "avif": "r0000457-7bd0019641a2-840.avif",
-        "webp": "r0000457-7bd0019641a2-840.webp",
-        "jpeg": "r0000457-7bd0019641a2-840.jpg"
-      },
-      {
-        "width": 1260,
-        "avif": "r0000457-7bd0019641a2-1260.avif",
-        "webp": "r0000457-7bd0019641a2-1260.webp",
-        "jpeg": "r0000457-7bd0019641a2-1260.jpg"
-      }
-    ],
+    "display": {
+      "src": "r0000457-7bd0019641a2-display.avif",
+      "width": 2160,
+      "height": 1357,
+      "bytes": 300231
+    },
     "full": {
       "src": "r0000457-7bd0019641a2-full.jpg",
       "width": 6000,
       "height": 3769,
-      "bytes": 4688554
+      "bytes": 14173239
     }
   },
   {
@@ -764,31 +470,17 @@
     "width": 4000,
     "height": 6000,
     "aspectRatio": 0.6666666666666666,
-    "sources": [
-      {
-        "width": 420,
-        "avif": "r0000459-b98c7c4b9f40-420.avif",
-        "webp": "r0000459-b98c7c4b9f40-420.webp",
-        "jpeg": "r0000459-b98c7c4b9f40-420.jpg"
-      },
-      {
-        "width": 840,
-        "avif": "r0000459-b98c7c4b9f40-840.avif",
-        "webp": "r0000459-b98c7c4b9f40-840.webp",
-        "jpeg": "r0000459-b98c7c4b9f40-840.jpg"
-      },
-      {
-        "width": 1260,
-        "avif": "r0000459-b98c7c4b9f40-1260.avif",
-        "webp": "r0000459-b98c7c4b9f40-1260.webp",
-        "jpeg": "r0000459-b98c7c4b9f40-1260.jpg"
-      }
-    ],
+    "display": {
+      "src": "r0000459-b98c7c4b9f40-display.avif",
+      "width": 1200,
+      "height": 1800,
+      "bytes": 89573
+    },
     "full": {
       "src": "r0000459-b98c7c4b9f40-full.jpg",
       "width": 4000,
       "height": 6000,
-      "bytes": 2200617
+      "bytes": 9794865
     }
   },
   {
@@ -800,31 +492,17 @@
     "width": 6000,
     "height": 4000,
     "aspectRatio": 1.5,
-    "sources": [
-      {
-        "width": 420,
-        "avif": "r0000450-f37c5e48d8bf-420.avif",
-        "webp": "r0000450-f37c5e48d8bf-420.webp",
-        "jpeg": "r0000450-f37c5e48d8bf-420.jpg"
-      },
-      {
-        "width": 840,
-        "avif": "r0000450-f37c5e48d8bf-840.avif",
-        "webp": "r0000450-f37c5e48d8bf-840.webp",
-        "jpeg": "r0000450-f37c5e48d8bf-840.jpg"
-      },
-      {
-        "width": 1260,
-        "avif": "r0000450-f37c5e48d8bf-1260.avif",
-        "webp": "r0000450-f37c5e48d8bf-1260.webp",
-        "jpeg": "r0000450-f37c5e48d8bf-1260.jpg"
-      }
-    ],
+    "display": {
+      "src": "r0000450-f37c5e48d8bf-display.avif",
+      "width": 2160,
+      "height": 1440,
+      "bytes": 68602
+    },
     "full": {
       "src": "r0000450-f37c5e48d8bf-full.jpg",
       "width": 6000,
       "height": 4000,
-      "bytes": 2336467
+      "bytes": 9953701
     }
   },
   {
@@ -836,31 +514,17 @@
     "width": 4000,
     "height": 6000,
     "aspectRatio": 0.6666666666666666,
-    "sources": [
-      {
-        "width": 420,
-        "avif": "r0000441-bf6c30aefeb2-420.avif",
-        "webp": "r0000441-bf6c30aefeb2-420.webp",
-        "jpeg": "r0000441-bf6c30aefeb2-420.jpg"
-      },
-      {
-        "width": 840,
-        "avif": "r0000441-bf6c30aefeb2-840.avif",
-        "webp": "r0000441-bf6c30aefeb2-840.webp",
-        "jpeg": "r0000441-bf6c30aefeb2-840.jpg"
-      },
-      {
-        "width": 1260,
-        "avif": "r0000441-bf6c30aefeb2-1260.avif",
-        "webp": "r0000441-bf6c30aefeb2-1260.webp",
-        "jpeg": "r0000441-bf6c30aefeb2-1260.jpg"
-      }
-    ],
+    "display": {
+      "src": "r0000441-bf6c30aefeb2-display.avif",
+      "width": 1200,
+      "height": 1800,
+      "bytes": 119837
+    },
     "full": {
       "src": "r0000441-bf6c30aefeb2-full.jpg",
       "width": 4000,
       "height": 6000,
-      "bytes": 3112017
+      "bytes": 12311785
     }
   },
   {
@@ -872,31 +536,17 @@
     "width": 6000,
     "height": 4000,
     "aspectRatio": 1.5,
-    "sources": [
-      {
-        "width": 420,
-        "avif": "r0000448-b6d53d97481d-420.avif",
-        "webp": "r0000448-b6d53d97481d-420.webp",
-        "jpeg": "r0000448-b6d53d97481d-420.jpg"
-      },
-      {
-        "width": 840,
-        "avif": "r0000448-b6d53d97481d-840.avif",
-        "webp": "r0000448-b6d53d97481d-840.webp",
-        "jpeg": "r0000448-b6d53d97481d-840.jpg"
-      },
-      {
-        "width": 1260,
-        "avif": "r0000448-b6d53d97481d-1260.avif",
-        "webp": "r0000448-b6d53d97481d-1260.webp",
-        "jpeg": "r0000448-b6d53d97481d-1260.jpg"
-      }
-    ],
+    "display": {
+      "src": "r0000448-b6d53d97481d-display.avif",
+      "width": 2160,
+      "height": 1440,
+      "bytes": 213596
+    },
     "full": {
       "src": "r0000448-b6d53d97481d-full.jpg",
       "width": 6000,
       "height": 4000,
-      "bytes": 3708120
+      "bytes": 13634918
     }
   },
   {
@@ -908,31 +558,17 @@
     "width": 6000,
     "height": 4000,
     "aspectRatio": 1.5,
-    "sources": [
-      {
-        "width": 420,
-        "avif": "r0000443-8337e0f3ea72-420.avif",
-        "webp": "r0000443-8337e0f3ea72-420.webp",
-        "jpeg": "r0000443-8337e0f3ea72-420.jpg"
-      },
-      {
-        "width": 840,
-        "avif": "r0000443-8337e0f3ea72-840.avif",
-        "webp": "r0000443-8337e0f3ea72-840.webp",
-        "jpeg": "r0000443-8337e0f3ea72-840.jpg"
-      },
-      {
-        "width": 1260,
-        "avif": "r0000443-8337e0f3ea72-1260.avif",
-        "webp": "r0000443-8337e0f3ea72-1260.webp",
-        "jpeg": "r0000443-8337e0f3ea72-1260.jpg"
-      }
-    ],
+    "display": {
+      "src": "r0000443-8337e0f3ea72-display.avif",
+      "width": 2160,
+      "height": 1440,
+      "bytes": 132256
+    },
     "full": {
       "src": "r0000443-8337e0f3ea72-full.jpg",
       "width": 6000,
       "height": 4000,
-      "bytes": 2681821
+      "bytes": 11197766
     }
   },
   {
@@ -944,31 +580,17 @@
     "width": 5939,
     "height": 3959,
     "aspectRatio": 1.5001262945188178,
-    "sources": [
-      {
-        "width": 420,
-        "avif": "r0000412-7a0e6e938a34-420.avif",
-        "webp": "r0000412-7a0e6e938a34-420.webp",
-        "jpeg": "r0000412-7a0e6e938a34-420.jpg"
-      },
-      {
-        "width": 840,
-        "avif": "r0000412-7a0e6e938a34-840.avif",
-        "webp": "r0000412-7a0e6e938a34-840.webp",
-        "jpeg": "r0000412-7a0e6e938a34-840.jpg"
-      },
-      {
-        "width": 1260,
-        "avif": "r0000412-7a0e6e938a34-1260.avif",
-        "webp": "r0000412-7a0e6e938a34-1260.webp",
-        "jpeg": "r0000412-7a0e6e938a34-1260.jpg"
-      }
-    ],
+    "display": {
+      "src": "r0000412-7a0e6e938a34-display.avif",
+      "width": 2160,
+      "height": 1440,
+      "bytes": 151830
+    },
     "full": {
       "src": "r0000412-7a0e6e938a34-full.jpg",
       "width": 5939,
       "height": 3959,
-      "bytes": 3207905
+      "bytes": 11918202
     }
   },
   {
@@ -980,31 +602,17 @@
     "width": 3945,
     "height": 5917,
     "aspectRatio": 0.666723001521041,
-    "sources": [
-      {
-        "width": 420,
-        "avif": "r0000436-d016311ad4b9-420.avif",
-        "webp": "r0000436-d016311ad4b9-420.webp",
-        "jpeg": "r0000436-d016311ad4b9-420.jpg"
-      },
-      {
-        "width": 840,
-        "avif": "r0000436-d016311ad4b9-840.avif",
-        "webp": "r0000436-d016311ad4b9-840.webp",
-        "jpeg": "r0000436-d016311ad4b9-840.jpg"
-      },
-      {
-        "width": 1260,
-        "avif": "r0000436-d016311ad4b9-1260.avif",
-        "webp": "r0000436-d016311ad4b9-1260.webp",
-        "jpeg": "r0000436-d016311ad4b9-1260.jpg"
-      }
-    ],
+    "display": {
+      "src": "r0000436-d016311ad4b9-display.avif",
+      "width": 1200,
+      "height": 1800,
+      "bytes": 586160
+    },
     "full": {
       "src": "r0000436-d016311ad4b9-full.jpg",
       "width": 3945,
       "height": 5917,
-      "bytes": 6650494
+      "bytes": 18963989
     }
   },
   {
@@ -1016,31 +624,17 @@
     "width": 6000,
     "height": 4000,
     "aspectRatio": 1.5,
-    "sources": [
-      {
-        "width": 420,
-        "avif": "r0000430-64ffa75c0197-420.avif",
-        "webp": "r0000430-64ffa75c0197-420.webp",
-        "jpeg": "r0000430-64ffa75c0197-420.jpg"
-      },
-      {
-        "width": 840,
-        "avif": "r0000430-64ffa75c0197-840.avif",
-        "webp": "r0000430-64ffa75c0197-840.webp",
-        "jpeg": "r0000430-64ffa75c0197-840.jpg"
-      },
-      {
-        "width": 1260,
-        "avif": "r0000430-64ffa75c0197-1260.avif",
-        "webp": "r0000430-64ffa75c0197-1260.webp",
-        "jpeg": "r0000430-64ffa75c0197-1260.jpg"
-      }
-    ],
+    "display": {
+      "src": "r0000430-64ffa75c0197-display.avif",
+      "width": 2160,
+      "height": 1440,
+      "bytes": 385322
+    },
     "full": {
       "src": "r0000430-64ffa75c0197-full.jpg",
       "width": 6000,
       "height": 4000,
-      "bytes": 4483591
+      "bytes": 15080604
     }
   },
   {
@@ -1052,31 +646,17 @@
     "width": 4000,
     "height": 6000,
     "aspectRatio": 0.6666666666666666,
-    "sources": [
-      {
-        "width": 420,
-        "avif": "r0000353-d521c8513f66-420.avif",
-        "webp": "r0000353-d521c8513f66-420.webp",
-        "jpeg": "r0000353-d521c8513f66-420.jpg"
-      },
-      {
-        "width": 840,
-        "avif": "r0000353-d521c8513f66-840.avif",
-        "webp": "r0000353-d521c8513f66-840.webp",
-        "jpeg": "r0000353-d521c8513f66-840.jpg"
-      },
-      {
-        "width": 1260,
-        "avif": "r0000353-d521c8513f66-1260.avif",
-        "webp": "r0000353-d521c8513f66-1260.webp",
-        "jpeg": "r0000353-d521c8513f66-1260.jpg"
-      }
-    ],
+    "display": {
+      "src": "r0000353-d521c8513f66-display.avif",
+      "width": 1200,
+      "height": 1800,
+      "bytes": 80386
+    },
     "full": {
       "src": "r0000353-d521c8513f66-full.jpg",
       "width": 4000,
       "height": 6000,
-      "bytes": 3077468
+      "bytes": 12421970
     }
   },
   {
@@ -1088,31 +668,17 @@
     "width": 6000,
     "height": 4000,
     "aspectRatio": 1.5,
-    "sources": [
-      {
-        "width": 420,
-        "avif": "r0000322-db33c11750bf-420.avif",
-        "webp": "r0000322-db33c11750bf-420.webp",
-        "jpeg": "r0000322-db33c11750bf-420.jpg"
-      },
-      {
-        "width": 840,
-        "avif": "r0000322-db33c11750bf-840.avif",
-        "webp": "r0000322-db33c11750bf-840.webp",
-        "jpeg": "r0000322-db33c11750bf-840.jpg"
-      },
-      {
-        "width": 1260,
-        "avif": "r0000322-db33c11750bf-1260.avif",
-        "webp": "r0000322-db33c11750bf-1260.webp",
-        "jpeg": "r0000322-db33c11750bf-1260.jpg"
-      }
-    ],
+    "display": {
+      "src": "r0000322-db33c11750bf-display.avif",
+      "width": 2160,
+      "height": 1440,
+      "bytes": 194493
+    },
     "full": {
       "src": "r0000322-db33c11750bf-full.jpg",
       "width": 6000,
       "height": 4000,
-      "bytes": 3551544
+      "bytes": 13046845
     }
   },
   {
@@ -1124,31 +690,17 @@
     "width": 6000,
     "height": 4000,
     "aspectRatio": 1.5,
-    "sources": [
-      {
-        "width": 420,
-        "avif": "r0000354-cf18c5ec27fe-420.avif",
-        "webp": "r0000354-cf18c5ec27fe-420.webp",
-        "jpeg": "r0000354-cf18c5ec27fe-420.jpg"
-      },
-      {
-        "width": 840,
-        "avif": "r0000354-cf18c5ec27fe-840.avif",
-        "webp": "r0000354-cf18c5ec27fe-840.webp",
-        "jpeg": "r0000354-cf18c5ec27fe-840.jpg"
-      },
-      {
-        "width": 1260,
-        "avif": "r0000354-cf18c5ec27fe-1260.avif",
-        "webp": "r0000354-cf18c5ec27fe-1260.webp",
-        "jpeg": "r0000354-cf18c5ec27fe-1260.jpg"
-      }
-    ],
+    "display": {
+      "src": "r0000354-cf18c5ec27fe-display.avif",
+      "width": 2160,
+      "height": 1440,
+      "bytes": 327548
+    },
     "full": {
       "src": "r0000354-cf18c5ec27fe-full.jpg",
       "width": 6000,
       "height": 4000,
-      "bytes": 4539761
+      "bytes": 14099508
     }
   },
   {
@@ -1160,31 +712,17 @@
     "width": 4000,
     "height": 6000,
     "aspectRatio": 0.6666666666666666,
-    "sources": [
-      {
-        "width": 420,
-        "avif": "r0000382-d25222671cd2-420.avif",
-        "webp": "r0000382-d25222671cd2-420.webp",
-        "jpeg": "r0000382-d25222671cd2-420.jpg"
-      },
-      {
-        "width": 840,
-        "avif": "r0000382-d25222671cd2-840.avif",
-        "webp": "r0000382-d25222671cd2-840.webp",
-        "jpeg": "r0000382-d25222671cd2-840.jpg"
-      },
-      {
-        "width": 1260,
-        "avif": "r0000382-d25222671cd2-1260.avif",
-        "webp": "r0000382-d25222671cd2-1260.webp",
-        "jpeg": "r0000382-d25222671cd2-1260.jpg"
-      }
-    ],
+    "display": {
+      "src": "r0000382-d25222671cd2-display.avif",
+      "width": 1200,
+      "height": 1800,
+      "bytes": 425803
+    },
     "full": {
       "src": "r0000382-d25222671cd2-full.jpg",
       "width": 4000,
       "height": 6000,
-      "bytes": 5357711
+      "bytes": 17910996
     }
   },
   {
@@ -1196,31 +734,17 @@
     "width": 4000,
     "height": 6000,
     "aspectRatio": 0.6666666666666666,
-    "sources": [
-      {
-        "width": 420,
-        "avif": "r0000386-f4c54c8e94ab-420.avif",
-        "webp": "r0000386-f4c54c8e94ab-420.webp",
-        "jpeg": "r0000386-f4c54c8e94ab-420.jpg"
-      },
-      {
-        "width": 840,
-        "avif": "r0000386-f4c54c8e94ab-840.avif",
-        "webp": "r0000386-f4c54c8e94ab-840.webp",
-        "jpeg": "r0000386-f4c54c8e94ab-840.jpg"
-      },
-      {
-        "width": 1260,
-        "avif": "r0000386-f4c54c8e94ab-1260.avif",
-        "webp": "r0000386-f4c54c8e94ab-1260.webp",
-        "jpeg": "r0000386-f4c54c8e94ab-1260.jpg"
-      }
-    ],
+    "display": {
+      "src": "r0000386-f4c54c8e94ab-display.avif",
+      "width": 1200,
+      "height": 1800,
+      "bytes": 83082
+    },
     "full": {
       "src": "r0000386-f4c54c8e94ab-full.jpg",
       "width": 4000,
       "height": 6000,
-      "bytes": 3472613
+      "bytes": 12601759
     }
   },
   {
@@ -1232,31 +756,17 @@
     "width": 4000,
     "height": 6000,
     "aspectRatio": 0.6666666666666666,
-    "sources": [
-      {
-        "width": 420,
-        "avif": "r0000374-71b28de423ab-420.avif",
-        "webp": "r0000374-71b28de423ab-420.webp",
-        "jpeg": "r0000374-71b28de423ab-420.jpg"
-      },
-      {
-        "width": 840,
-        "avif": "r0000374-71b28de423ab-840.avif",
-        "webp": "r0000374-71b28de423ab-840.webp",
-        "jpeg": "r0000374-71b28de423ab-840.jpg"
-      },
-      {
-        "width": 1260,
-        "avif": "r0000374-71b28de423ab-1260.avif",
-        "webp": "r0000374-71b28de423ab-1260.webp",
-        "jpeg": "r0000374-71b28de423ab-1260.jpg"
-      }
-    ],
+    "display": {
+      "src": "r0000374-71b28de423ab-display.avif",
+      "width": 1200,
+      "height": 1800,
+      "bytes": 425418
+    },
     "full": {
       "src": "r0000374-71b28de423ab-full.jpg",
       "width": 4000,
       "height": 6000,
-      "bytes": 5786856
+      "bytes": 17555271
     }
   },
   {
@@ -1268,31 +778,17 @@
     "width": 4000,
     "height": 6000,
     "aspectRatio": 0.6666666666666666,
-    "sources": [
-      {
-        "width": 420,
-        "avif": "r0000394-364e9a7c2d10-420.avif",
-        "webp": "r0000394-364e9a7c2d10-420.webp",
-        "jpeg": "r0000394-364e9a7c2d10-420.jpg"
-      },
-      {
-        "width": 840,
-        "avif": "r0000394-364e9a7c2d10-840.avif",
-        "webp": "r0000394-364e9a7c2d10-840.webp",
-        "jpeg": "r0000394-364e9a7c2d10-840.jpg"
-      },
-      {
-        "width": 1260,
-        "avif": "r0000394-364e9a7c2d10-1260.avif",
-        "webp": "r0000394-364e9a7c2d10-1260.webp",
-        "jpeg": "r0000394-364e9a7c2d10-1260.jpg"
-      }
-    ],
+    "display": {
+      "src": "r0000394-364e9a7c2d10-display.avif",
+      "width": 1200,
+      "height": 1800,
+      "bytes": 229894
+    },
     "full": {
       "src": "r0000394-364e9a7c2d10-full.jpg",
       "width": 4000,
       "height": 6000,
-      "bytes": 4291909
+      "bytes": 15392776
     }
   },
   {
@@ -1304,31 +800,17 @@
     "width": 6000,
     "height": 4000,
     "aspectRatio": 1.5,
-    "sources": [
-      {
-        "width": 420,
-        "avif": "r0000349-1bed7c376ea0-420.avif",
-        "webp": "r0000349-1bed7c376ea0-420.webp",
-        "jpeg": "r0000349-1bed7c376ea0-420.jpg"
-      },
-      {
-        "width": 840,
-        "avif": "r0000349-1bed7c376ea0-840.avif",
-        "webp": "r0000349-1bed7c376ea0-840.webp",
-        "jpeg": "r0000349-1bed7c376ea0-840.jpg"
-      },
-      {
-        "width": 1260,
-        "avif": "r0000349-1bed7c376ea0-1260.avif",
-        "webp": "r0000349-1bed7c376ea0-1260.webp",
-        "jpeg": "r0000349-1bed7c376ea0-1260.jpg"
-      }
-    ],
+    "display": {
+      "src": "r0000349-1bed7c376ea0-display.avif",
+      "width": 2160,
+      "height": 1440,
+      "bytes": 68027
+    },
     "full": {
       "src": "r0000349-1bed7c376ea0-full.jpg",
       "width": 6000,
       "height": 4000,
-      "bytes": 2827175
+      "bytes": 11436253
     }
   },
   {
@@ -1340,31 +822,17 @@
     "width": 6000,
     "height": 4000,
     "aspectRatio": 1.5,
-    "sources": [
-      {
-        "width": 420,
-        "avif": "r0000389-b8aedd3639d7-420.avif",
-        "webp": "r0000389-b8aedd3639d7-420.webp",
-        "jpeg": "r0000389-b8aedd3639d7-420.jpg"
-      },
-      {
-        "width": 840,
-        "avif": "r0000389-b8aedd3639d7-840.avif",
-        "webp": "r0000389-b8aedd3639d7-840.webp",
-        "jpeg": "r0000389-b8aedd3639d7-840.jpg"
-      },
-      {
-        "width": 1260,
-        "avif": "r0000389-b8aedd3639d7-1260.avif",
-        "webp": "r0000389-b8aedd3639d7-1260.webp",
-        "jpeg": "r0000389-b8aedd3639d7-1260.jpg"
-      }
-    ],
+    "display": {
+      "src": "r0000389-b8aedd3639d7-display.avif",
+      "width": 2160,
+      "height": 1440,
+      "bytes": 54113
+    },
     "full": {
       "src": "r0000389-b8aedd3639d7-full.jpg",
       "width": 6000,
       "height": 4000,
-      "bytes": 2528361
+      "bytes": 10523829
     }
   },
   {
@@ -1376,31 +844,17 @@
     "width": 6000,
     "height": 4000,
     "aspectRatio": 1.5,
-    "sources": [
-      {
-        "width": 420,
-        "avif": "r0000396-a57385393717-420.avif",
-        "webp": "r0000396-a57385393717-420.webp",
-        "jpeg": "r0000396-a57385393717-420.jpg"
-      },
-      {
-        "width": 840,
-        "avif": "r0000396-a57385393717-840.avif",
-        "webp": "r0000396-a57385393717-840.webp",
-        "jpeg": "r0000396-a57385393717-840.jpg"
-      },
-      {
-        "width": 1260,
-        "avif": "r0000396-a57385393717-1260.avif",
-        "webp": "r0000396-a57385393717-1260.webp",
-        "jpeg": "r0000396-a57385393717-1260.jpg"
-      }
-    ],
+    "display": {
+      "src": "r0000396-a57385393717-display.avif",
+      "width": 2160,
+      "height": 1440,
+      "bytes": 267238
+    },
     "full": {
       "src": "r0000396-a57385393717-full.jpg",
       "width": 6000,
       "height": 4000,
-      "bytes": 3416660
+      "bytes": 12524848
     }
   },
   {
@@ -1412,31 +866,17 @@
     "width": 5953,
     "height": 3969,
     "aspectRatio": 1.4998740236835475,
-    "sources": [
-      {
-        "width": 420,
-        "avif": "r0000378-3952223bc54f-420.avif",
-        "webp": "r0000378-3952223bc54f-420.webp",
-        "jpeg": "r0000378-3952223bc54f-420.jpg"
-      },
-      {
-        "width": 840,
-        "avif": "r0000378-3952223bc54f-840.avif",
-        "webp": "r0000378-3952223bc54f-840.webp",
-        "jpeg": "r0000378-3952223bc54f-840.jpg"
-      },
-      {
-        "width": 1260,
-        "avif": "r0000378-3952223bc54f-1260.avif",
-        "webp": "r0000378-3952223bc54f-1260.webp",
-        "jpeg": "r0000378-3952223bc54f-1260.jpg"
-      }
-    ],
+    "display": {
+      "src": "r0000378-3952223bc54f-display.avif",
+      "width": 2160,
+      "height": 1440,
+      "bytes": 149402
+    },
     "full": {
       "src": "r0000378-3952223bc54f-full.jpg",
       "width": 5953,
       "height": 3969,
-      "bytes": 2855745
+      "bytes": 10603208
     }
   },
   {
@@ -1448,31 +888,17 @@
     "width": 4000,
     "height": 6000,
     "aspectRatio": 0.6666666666666666,
-    "sources": [
-      {
-        "width": 420,
-        "avif": "r0000371-c7a494eef828-420.avif",
-        "webp": "r0000371-c7a494eef828-420.webp",
-        "jpeg": "r0000371-c7a494eef828-420.jpg"
-      },
-      {
-        "width": 840,
-        "avif": "r0000371-c7a494eef828-840.avif",
-        "webp": "r0000371-c7a494eef828-840.webp",
-        "jpeg": "r0000371-c7a494eef828-840.jpg"
-      },
-      {
-        "width": 1260,
-        "avif": "r0000371-c7a494eef828-1260.avif",
-        "webp": "r0000371-c7a494eef828-1260.webp",
-        "jpeg": "r0000371-c7a494eef828-1260.jpg"
-      }
-    ],
+    "display": {
+      "src": "r0000371-c7a494eef828-display.avif",
+      "width": 1200,
+      "height": 1800,
+      "bytes": 56321
+    },
     "full": {
       "src": "r0000371-c7a494eef828-full.jpg",
       "width": 4000,
       "height": 6000,
-      "bytes": 3596132
+      "bytes": 12741386
     }
   },
   {
@@ -1484,31 +910,17 @@
     "width": 6000,
     "height": 4000,
     "aspectRatio": 1.5,
-    "sources": [
-      {
-        "width": 420,
-        "avif": "r0000368-3c5baa856691-420.avif",
-        "webp": "r0000368-3c5baa856691-420.webp",
-        "jpeg": "r0000368-3c5baa856691-420.jpg"
-      },
-      {
-        "width": 840,
-        "avif": "r0000368-3c5baa856691-840.avif",
-        "webp": "r0000368-3c5baa856691-840.webp",
-        "jpeg": "r0000368-3c5baa856691-840.jpg"
-      },
-      {
-        "width": 1260,
-        "avif": "r0000368-3c5baa856691-1260.avif",
-        "webp": "r0000368-3c5baa856691-1260.webp",
-        "jpeg": "r0000368-3c5baa856691-1260.jpg"
-      }
-    ],
+    "display": {
+      "src": "r0000368-3c5baa856691-display.avif",
+      "width": 2160,
+      "height": 1440,
+      "bytes": 123037
+    },
     "full": {
       "src": "r0000368-3c5baa856691-full.jpg",
       "width": 6000,
       "height": 4000,
-      "bytes": 2700479
+      "bytes": 11116500
     }
   },
   {
@@ -1520,31 +932,17 @@
     "width": 6000,
     "height": 4000,
     "aspectRatio": 1.5,
-    "sources": [
-      {
-        "width": 420,
-        "avif": "r0000370-3c6d1d0c7181-420.avif",
-        "webp": "r0000370-3c6d1d0c7181-420.webp",
-        "jpeg": "r0000370-3c6d1d0c7181-420.jpg"
-      },
-      {
-        "width": 840,
-        "avif": "r0000370-3c6d1d0c7181-840.avif",
-        "webp": "r0000370-3c6d1d0c7181-840.webp",
-        "jpeg": "r0000370-3c6d1d0c7181-840.jpg"
-      },
-      {
-        "width": 1260,
-        "avif": "r0000370-3c6d1d0c7181-1260.avif",
-        "webp": "r0000370-3c6d1d0c7181-1260.webp",
-        "jpeg": "r0000370-3c6d1d0c7181-1260.jpg"
-      }
-    ],
+    "display": {
+      "src": "r0000370-3c6d1d0c7181-display.avif",
+      "width": 2160,
+      "height": 1440,
+      "bytes": 71271
+    },
     "full": {
       "src": "r0000370-3c6d1d0c7181-full.jpg",
       "width": 6000,
       "height": 4000,
-      "bytes": 3791907
+      "bytes": 13139948
     }
   }
 ]

@@ -5,7 +5,10 @@ test('renders the photo list and opens/closes the lightbox', async ({
 }, testInfo) => {
   await page.goto('/')
   await expect(page.getByText('Photos')).toHaveCount(0)
-  await expect(page.getByLabel('Photo list')).toBeVisible()
+  const list = page.getByLabel('Photo list')
+  await expect(list).toBeVisible()
+  await expect(list).toHaveAttribute('data-loaded-count', '20')
+  await expect(list).toHaveAttribute('data-total-count', '43')
   await expect(page.locator('.app')).toHaveCSS(
     'background-color',
     'rgb(255, 255, 255)',
@@ -13,7 +16,8 @@ test('renders the photo list and opens/closes the lightbox', async ({
 
   const firstPhoto = page.getByRole('button', { name: /^Open / }).first()
   await expect(firstPhoto).toBeVisible()
-  await expect(page.getByRole('button', { name: /^Open / })).toHaveCount(43)
+  await expect(page.getByRole('button', { name: /^Open / })).toHaveCount(20)
+  await expect(page.locator('.photo-date')).toHaveCount(0)
 
   const viewport = page.viewportSize()
   const firstImageBox = await firstPhoto.locator('img').boundingBox()
@@ -94,4 +98,24 @@ test('renders the photo list and opens/closes the lightbox', async ({
   await expect(page.locator('.pswp.pswp--open')).toBeVisible()
   await page.keyboard.press('Escape')
   await expect(page.locator('.pswp')).toBeHidden()
+})
+
+test('progressively loads more photos while scrolling', async ({ page }) => {
+  await page.goto('/')
+  const list = page.getByLabel('Photo list')
+
+  await expect(list).toHaveAttribute('data-loaded-count', '20')
+  await expect(page.getByRole('button', { name: /^Open / })).toHaveCount(20)
+
+  await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight))
+  await expect(list).toHaveAttribute('data-loaded-count', '30')
+  await expect(page.getByRole('button', { name: /^Open / })).toHaveCount(30)
+
+  await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight))
+  await expect(list).toHaveAttribute('data-loaded-count', '40')
+  await expect(page.getByRole('button', { name: /^Open / })).toHaveCount(40)
+
+  await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight))
+  await expect(list).toHaveAttribute('data-loaded-count', '43')
+  await expect(page.getByRole('button', { name: /^Open / })).toHaveCount(43)
 })

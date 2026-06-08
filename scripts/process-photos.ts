@@ -12,12 +12,12 @@ type PhotoManifest = {
   width: number
   height: number
   aspectRatio: number
-  sources: Array<{
+  display: {
+    src: string
     width: number
-    avif: string
-    webp: string
-    jpeg: string
-  }>
+    height: number
+    bytes: number
+  }
   full: {
     src: string
     width: number
@@ -31,7 +31,7 @@ const sourceDir =
 const outputDir = process.env.PHOTO_OUTPUT_DIR ?? 'public/photos'
 const manifestPath =
   process.env.PHOTO_MANIFEST_PATH ?? 'src/data/photos.generated.json'
-const gridWidths = [420, 840, 1260]
+const displayBounds = { width: 2160, height: 1800 }
 const inputExtensions = new Set([
   '.avif',
   '.heic',
@@ -83,50 +83,24 @@ async function main() {
       'base64',
     )}`
 
-    const fullName = `${id}-full.jpg`
+    const fullExtension = path.extname(input.path).toLowerCase()
+    const fullName = `${id}-full${fullExtension}`
     const fullPath = path.join(outputDir, fullName)
-    const fullInfo = await image
+    await writeFile(fullPath, buffer)
+
+    const displayName = `${id}-display.avif`
+    const displayInfo = await image
       .clone()
-      .jpeg({ quality: 92, mozjpeg: true })
-      .toFile(fullPath)
-
-    const usableWidths = gridWidths
-      .filter((width) => width < fullInfo.width)
-      .concat(Math.min(fullInfo.width, gridWidths[0]))
-      .filter(uniqueNumber)
-      .sort((a, b) => a - b)
-
-    const sources: PhotoManifest['sources'] = []
-    for (const width of usableWidths) {
-      const avifName = `${id}-${width}.avif`
-      const webpName = `${id}-${width}.webp`
-      const jpegName = `${id}-${width}.jpg`
-
-      await Promise.all([
-        image
-          .clone()
-          .resize({ width, withoutEnlargement: true })
-          .avif({ quality: 52, effort: 2 })
-          .toFile(path.join(outputDir, avifName)),
-        image
-          .clone()
-          .resize({ width, withoutEnlargement: true })
-          .webp({ quality: 78, effort: 3 })
-          .toFile(path.join(outputDir, webpName)),
-        image
-          .clone()
-          .resize({ width, withoutEnlargement: true })
-          .jpeg({ quality: 82, mozjpeg: true })
-          .toFile(path.join(outputDir, jpegName)),
-      ])
-
-      sources.push({
-        width,
-        avif: publicUrl(avifName),
-        webp: publicUrl(webpName),
-        jpeg: publicUrl(jpegName),
+      .resize({
+        width: displayBounds.width,
+        height: displayBounds.height,
+        fit: 'inside',
+        withoutEnlargement: true,
       })
-    }
+      .avif({ quality: 62, effort: 4 })
+      .toFile(path.join(outputDir, displayName))
+
+    const dimensions = orientedDimensions(metadata)
 
     photos.push({
       id,
@@ -134,15 +108,20 @@ async function main() {
       alt: titleFromName(baseName),
       color,
       placeholder,
-      width: fullInfo.width,
-      height: fullInfo.height,
-      aspectRatio: fullInfo.width / fullInfo.height,
-      sources,
+      width: dimensions.width,
+      height: dimensions.height,
+      aspectRatio: dimensions.width / dimensions.height,
+      display: {
+        src: publicUrl(displayName),
+        width: displayInfo.width,
+        height: displayInfo.height,
+        bytes: displayInfo.size,
+      },
       full: {
         src: publicUrl(fullName),
-        width: fullInfo.width,
-        height: fullInfo.height,
-        bytes: fullInfo.size,
+        width: dimensions.width,
+        height: dimensions.height,
+        bytes: input.size,
       },
     })
   }
@@ -161,7 +140,7 @@ async function findImages(dir: string) {
       .map(async (entry) => {
         const inputPath = path.join(entry.parentPath, entry.name)
         const inputStat = await stat(inputPath)
-        return { path: inputPath, mtimeMs: inputStat.mtimeMs }
+        return { path: inputPath, mtimeMs: inputStat.mtimeMs, size: inputStat.size }
       }),
   )
 
@@ -195,8 +174,15 @@ function rgbToHex(red: number, green: number, blue: number) {
     .join('')}`
 }
 
-function uniqueNumber(value: number, index: number, values: number[]) {
-  return values.indexOf(value) === index
+function orientedDimensions(metadata: sharp.Metadata) {
+  const width = metadata.width ?? 0
+  const height = metadata.height ?? 0
+  const shouldSwap =
+    typeof metadata.orientation === 'number' &&
+    metadata.orientation >= 5 &&
+    metadata.orientation <= 8
+
+  return shouldSwap ? { width: height, height: width } : { width, height }
 }
 
 main().catch((error: unknown) => {

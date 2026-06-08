@@ -72,8 +72,13 @@ function contentTypeFor(filePath: string) {
     case '.jpg':
     case '.jpeg':
       return 'image/jpeg'
+    case '.heic':
+      return 'image/heic'
     case '.png':
       return 'image/png'
+    case '.tif':
+    case '.tiff':
+      return 'image/tiff'
     case '.webp':
       return 'image/webp'
     default:

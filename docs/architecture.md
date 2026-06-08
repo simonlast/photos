@@ -20,8 +20,8 @@ Generated image assets go to `public/photos`, and the app imports
 
 `npm run photos:process` generates:
 
-- AVIF, WebP, and JPEG responsive display variants.
-- A high-resolution JPEG lightbox image.
+- One bounded AVIF image for the scrolling page.
+- One byte-for-byte original copy for the lightbox.
 - A small base64 placeholder and dominant color.
 - A manifest consumed by the React app.
 

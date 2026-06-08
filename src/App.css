@@ -15,6 +15,7 @@
 .photo-item {
   display: flex;
   align-items: center;
+  flex-direction: column;
   justify-content: center;
   width: 100%;
   min-height: 100svh;
@@ -57,6 +58,12 @@
   place-items: center;
   color: #6f6d66;
   font-size: 14px;
+}
+
+.sentinel {
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
 }
 
 .pswp {
