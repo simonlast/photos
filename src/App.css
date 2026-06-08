@@ -1,0 +1,72 @@
+.app {
+  min-height: 100svh;
+  background: #f3f0ea;
+  color: #161512;
+}
+
+.photo-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 96px;
+  width: 100%;
+  padding: 72px 18px 96px;
+}
+
+.photo-item {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 0;
+}
+
+.photo-card {
+  display: block;
+  width: 100%;
+  max-width: var(--photo-max-width, 1080px);
+  padding: 0;
+  overflow: hidden;
+  cursor: zoom-in;
+  border: 0;
+  border-radius: 1px;
+  background: var(--photo-bg, #ddd);
+  box-shadow: none;
+  transform: translateZ(0);
+}
+
+.photo-card:focus-visible {
+  outline: 2px solid #161512;
+  outline-offset: 10px;
+}
+
+.photo-card__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 0;
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+.photo-card__image.is-loaded {
+  opacity: 1;
+}
+
+.empty-state {
+  display: grid;
+  min-height: 160px;
+  place-items: center;
+  color: #6f6d66;
+  font-size: 14px;
+}
+
+.pswp {
+  --pswp-bg: rgba(8, 8, 7, 0.96);
+}
+
+@media (max-width: 720px) {
+  .photo-list {
+    gap: 48px;
+    padding: 36px 12px 56px;
+  }
+}
