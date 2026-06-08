@@ -32,6 +32,16 @@ test('renders the photo list and opens/closes the lightbox', async ({
   const activeImage = activeSlide.locator('.pswp__img:not(.pswp__img--placeholder)')
   const zoomWrap = activeSlide.locator('.pswp__zoom-wrap')
   await expect(activeImage).toBeVisible()
+  const fitBox = await activeImage.boundingBox()
+  const fitViewport = page.viewportSize()
+  expect(fitBox).not.toBeNull()
+  expect(fitViewport).not.toBeNull()
+  expect(fitBox!.x).toBeGreaterThanOrEqual(11)
+  expect(fitBox!.y).toBeGreaterThanOrEqual(11)
+  expect(fitBox!.x + fitBox!.width).toBeLessThanOrEqual(fitViewport!.width - 11)
+  expect(fitBox!.y + fitBox!.height).toBeLessThanOrEqual(
+    fitViewport!.height - 11,
+  )
 
   const initialTransform = await zoomWrap.evaluate(
     (element) => getComputedStyle(element).transform,
@@ -57,6 +67,14 @@ test('renders the photo list and opens/closes the lightbox', async ({
       zoomWrap.evaluate((element) => getComputedStyle(element).transform),
     )
     .not.toBe(initialTransform)
+  const zoomedBox = await activeImage.boundingBox()
+  expect(zoomedBox).not.toBeNull()
+  expect(
+    zoomedBox!.x <= 0 ||
+      zoomedBox!.x + zoomedBox!.width >= fitViewport!.width ||
+      zoomedBox!.y <= 0 ||
+      zoomedBox!.y + zoomedBox!.height >= fitViewport!.height,
+  ).toBe(true)
 
   await tapImageCenter()
   await expect

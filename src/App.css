@@ -36,11 +36,6 @@
   transform: translateZ(0);
 }
 
-.photo-card:focus-visible {
-  outline: 2px solid #161512;
-  outline-offset: 10px;
-}
-
 .photo-card__image {
   display: block;
   width: auto;

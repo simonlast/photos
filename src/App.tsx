@@ -1,4 +1,5 @@
 import PhotoSwipeLightbox from 'photoswipe/lightbox'
+import type { ActionFn } from 'photoswipe'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import 'photoswipe/style.css'
 import './App.css'
@@ -14,6 +15,20 @@ function App() {
   const lightboxRef = useRef<PhotoSwipeLightbox | null>(null)
 
   useEffect(() => {
+    const closeActiveLightbox = () => {
+      lightboxRef.current?.pswp?.close()
+      window.setTimeout(() => lightboxRef.current?.pswp?.close(), 1_000)
+    }
+
+    const handleGuardedLightboxAction: ActionFn = (point, originalEvent) => {
+      if (clickIsInsideActiveLightboxImage(originalEvent)) {
+        lightboxRef.current?.pswp?.currSlide?.toggleZoom(point)
+        return
+      }
+
+      closeActiveLightbox()
+    }
+
     const lightbox = new PhotoSwipeLightbox({
       dataSource: photos.map((photo) => ({
         src: resolvePhotoUrl(photo.full.src),
@@ -22,7 +37,7 @@ function App() {
         alt: photo.alt,
         msrc: resolvePhotoUrl(photo.sources[0]?.jpeg ?? photo.full.src),
       })),
-      bgClickAction: 'close',
+      bgClickAction: handleGuardedLightboxAction,
       arrowNext: false,
       arrowPrev: false,
       close: false,
@@ -30,9 +45,10 @@ function App() {
       escKey: true,
       imageClickAction: 'zoom',
       initialZoomLevel: 'fit',
+      padding: { top: 12, right: 12, bottom: 12, left: 12 },
       secondaryZoomLevel: 1,
       showHideAnimationType: 'none',
-      tapAction: 'zoom',
+      tapAction: handleGuardedLightboxAction,
       zoom: false,
       pswpModule: () => import('photoswipe'),
     })
@@ -44,11 +60,6 @@ function App() {
     lightbox.on('close', () => {
       document.documentElement.classList.remove('lightbox-open')
     })
-
-    const closeActiveLightbox = () => {
-      lightbox.pswp?.close()
-      window.setTimeout(() => lightbox.pswp?.close(), 1_000)
-    }
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
@@ -64,11 +75,7 @@ function App() {
         return
       }
 
-      const activeImage = document.querySelector(
-        '.pswp__item[aria-hidden="false"] .pswp__img:not(.pswp__img--placeholder)',
-      )
-
-      if (activeImage && clickIsInsideElement(event, activeImage)) {
+      if (clickIsInsideActiveLightboxImage(event)) {
         return
       }
 
@@ -120,7 +127,19 @@ function App() {
   )
 }
 
-function clickIsInsideElement(event: MouseEvent, element: Element) {
+function clickIsInsideActiveLightboxImage(event: PointerEvent) {
+  const activeImage = document.querySelector(
+    '.pswp__item[aria-hidden="false"] .pswp__img:not(.pswp__img--placeholder)',
+  )
+
+  if (!activeImage) {
+    return false
+  }
+
+  return clickIsInsideElement(event, activeImage)
+}
+
+function clickIsInsideElement(event: MouseEvent | PointerEvent, element: Element) {
   const rect = element.getBoundingClientRect()
 
   return (
