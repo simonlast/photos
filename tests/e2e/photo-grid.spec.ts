@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test'
+import { expect, test, type Locator } from '@playwright/test'
 
 test('renders the photo list and opens/closes the lightbox', async ({
   page,
@@ -15,12 +15,19 @@ test('renders the photo list and opens/closes the lightbox', async ({
   )
 
   const firstPhoto = page.getByRole('button', { name: /^Open / }).first()
+  const firstImage = firstPhoto.locator('img')
   await expect(firstPhoto).toBeVisible()
   await expect(page.getByRole('button', { name: /^Open / })).toHaveCount(20)
   await expect(page.locator('.photo-date')).toHaveCount(0)
+  await expectImageDecoded(firstImage)
+  await expect
+    .poll(() =>
+      firstImage.evaluate((node) => (node as HTMLImageElement).currentSrc),
+    )
+    .toContain('-display.avif')
 
   const viewport = page.viewportSize()
-  const firstImageBox = await firstPhoto.locator('img').boundingBox()
+  const firstImageBox = await firstImage.boundingBox()
   expect(viewport).not.toBeNull()
   expect(firstImageBox).not.toBeNull()
   expect(firstImageBox!.height).toBeLessThanOrEqual(viewport!.height - 80)
@@ -36,6 +43,12 @@ test('renders the photo list and opens/closes the lightbox', async ({
   const activeImage = activeSlide.locator('.pswp__img:not(.pswp__img--placeholder)')
   const zoomWrap = activeSlide.locator('.pswp__zoom-wrap')
   await expect(activeImage).toBeVisible()
+  await expectImageDecoded(activeImage)
+  await expect
+    .poll(() =>
+      activeImage.evaluate((node) => (node as HTMLImageElement).currentSrc),
+    )
+    .toContain('-full.')
   const fitBox = await activeImage.boundingBox()
   const fitViewport = page.viewportSize()
   expect(fitBox).not.toBeNull()
@@ -50,19 +63,28 @@ test('renders the photo list and opens/closes the lightbox', async ({
   const initialTransform = await zoomWrap.evaluate(
     (element) => getComputedStyle(element).transform,
   )
-  const imageBox = await activeImage.boundingBox()
-  expect(imageBox).not.toBeNull()
-
   const tapImageCenter = async () => {
+    const currentViewport = page.viewportSize()
+    const currentBox = await activeImage.boundingBox()
+    expect(currentViewport).not.toBeNull()
+    expect(currentBox).not.toBeNull()
+    const x = clamp(
+      currentViewport!.width / 2,
+      currentBox!.x + 1,
+      currentBox!.x + currentBox!.width - 1,
+    )
+    const y = clamp(
+      currentViewport!.height / 2,
+      currentBox!.y + 1,
+      currentBox!.y + currentBox!.height - 1,
+    )
+
     if (testInfo.project.name === 'mobile') {
-      await activeImage.tap()
+      await page.touchscreen.tap(x, y)
       return
     }
 
-    await page.mouse.click(
-      imageBox!.x + imageBox!.width / 2,
-      imageBox!.y + imageBox!.height / 2,
-    )
+    await page.mouse.click(x, y)
   }
 
   await tapImageCenter()
@@ -71,14 +93,7 @@ test('renders the photo list and opens/closes the lightbox', async ({
       zoomWrap.evaluate((element) => getComputedStyle(element).transform),
     )
     .not.toBe(initialTransform)
-  const zoomedBox = await activeImage.boundingBox()
-  expect(zoomedBox).not.toBeNull()
-  expect(
-    zoomedBox!.x <= 0 ||
-      zoomedBox!.x + zoomedBox!.width >= fitViewport!.width ||
-      zoomedBox!.y <= 0 ||
-      zoomedBox!.y + zoomedBox!.height >= fitViewport!.height,
-  ).toBe(true)
+  await expect.poll(async () => imageTouchesViewportEdge(activeImage)).toBe(true)
 
   await tapImageCenter()
   await expect
@@ -119,3 +134,34 @@ test('progressively loads more photos while scrolling', async ({ page }) => {
   await expect(list).toHaveAttribute('data-loaded-count', '43')
   await expect(page.getByRole('button', { name: /^Open / })).toHaveCount(43)
 })
+
+function clamp(value: number, min: number, max: number) {
+  return Math.min(Math.max(value, min), max)
+}
+
+async function imageTouchesViewportEdge(locator: Locator) {
+  const box = await locator.boundingBox()
+  const viewport = locator.page().viewportSize()
+
+  if (!box || !viewport) {
+    return false
+  }
+
+  return (
+    box.x <= 0 ||
+    box.x + box.width >= viewport.width ||
+    box.y <= 0 ||
+    box.y + box.height >= viewport.height
+  )
+}
+
+async function expectImageDecoded(locator: Locator) {
+  await expect
+    .poll(async () =>
+      locator.evaluate((node) => {
+        const image = node as HTMLImageElement
+        return image.complete && image.naturalWidth > 0 && image.naturalHeight > 0
+      }),
+    )
+    .toBe(true)
+}

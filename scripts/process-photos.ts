@@ -1,5 +1,12 @@
 import { createHash } from 'node:crypto'
-import { mkdir, readdir, readFile, rm, stat, writeFile } from 'node:fs/promises'
+import {
+  copyFile,
+  mkdir,
+  readdir,
+  readFile,
+  stat,
+  writeFile,
+} from 'node:fs/promises'
 import path from 'node:path'
 import sharp from 'sharp'
 
@@ -45,8 +52,8 @@ const inputExtensions = new Set([
 
 async function main() {
   const inputs = await findImages(sourceDir)
+  const existingPhotos = await readExistingManifest()
 
-  await rm(outputDir, { force: true, recursive: true })
   await mkdir(outputDir, { recursive: true })
   await mkdir(path.dirname(manifestPath), { recursive: true })
 
@@ -60,9 +67,27 @@ async function main() {
     const hash = createHash('sha256').update(buffer).digest('hex').slice(0, 12)
     const baseName = slugify(path.basename(input.path, path.extname(input.path)))
     const id = `${baseName}-${hash}`
+    const fullExtension = path.extname(input.path).toLowerCase()
+    const fullName = `${id}-full${fullExtension}`
+    const fullPath = path.join(outputDir, fullName)
+    const displayName = `${id}-display.avif`
+    const displayPath = path.join(outputDir, displayName)
+    const existingPhoto = existingPhotos.get(id)
+    const canReuseExistingPhoto =
+      existingPhoto &&
+      existingPhoto.display.src === publicUrl(displayName) &&
+      existingPhoto.full.src === publicUrl(fullName) &&
+      (await fileHasSize(displayPath, existingPhoto.display.bytes)) &&
+      (await fileHasSize(fullPath, input.size))
+
+    if (canReuseExistingPhoto) {
+      photos.push(existingPhoto)
+      console.log(`  reused ${id}`)
+      continue
+    }
+
     const image = sharp(buffer, { limitInputPixels: false }).rotate()
     const metadata = await image.metadata()
-
     if (!metadata.width || !metadata.height) {
       console.warn(`Skipping ${input.path}: missing dimensions`)
       continue
@@ -83,12 +108,10 @@ async function main() {
       'base64',
     )}`
 
-    const fullExtension = path.extname(input.path).toLowerCase()
-    const fullName = `${id}-full${fullExtension}`
-    const fullPath = path.join(outputDir, fullName)
-    await writeFile(fullPath, buffer)
+    if (!(await fileHasSize(fullPath, input.size))) {
+      await copyFile(input.path, fullPath)
+    }
 
-    const displayName = `${id}-display.avif`
     const displayInfo = await image
       .clone()
       .resize({
@@ -98,7 +121,7 @@ async function main() {
         withoutEnlargement: true,
       })
       .avif({ quality: 62, effort: 4 })
-      .toFile(path.join(outputDir, displayName))
+      .toFile(displayPath)
 
     const dimensions = orientedDimensions(metadata)
 
@@ -130,6 +153,21 @@ async function main() {
   console.log(`Processed ${photos.length} photos into ${outputDir}`)
 }
 
+async function readExistingManifest() {
+  try {
+    const manifest = JSON.parse(
+      await readFile(manifestPath, 'utf8'),
+    ) as PhotoManifest[]
+    return new Map(manifest.map((photo) => [photo.id, photo]))
+  } catch (error) {
+    if (error instanceof Error && 'code' in error && error.code === 'ENOENT') {
+      return new Map<string, PhotoManifest>()
+    }
+
+    throw error
+  }
+}
+
 async function findImages(dir: string) {
   const entries = await readdir(dir, { recursive: true, withFileTypes: true })
   const files = await Promise.all(
@@ -155,6 +193,19 @@ async function findImages(dir: string) {
 
 function publicUrl(fileName: string) {
   return fileName
+}
+
+async function fileHasSize(filePath: string, expectedSize: number) {
+  try {
+    const fileStat = await stat(filePath)
+    return fileStat.size === expectedSize
+  } catch (error) {
+    if (error instanceof Error && 'code' in error && error.code === 'ENOENT') {
+      return false
+    }
+
+    throw error
+  }
 }
 
 function titleFromName(name: string) {

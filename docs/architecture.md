@@ -25,6 +25,10 @@ Generated image assets go to `public/photos`, and the app imports
 - A small base64 placeholder and dominant color.
 - A manifest consumed by the React app.
 
+Generated filenames include a content hash. Re-running the processor reuses
+existing assets and manifest entries for unchanged source files, so adding a few
+new exports does not re-encode the whole library.
+
 The manifest stores image filenames only. The app prefixes them with
 `VITE_PHOTO_BASE_URL` at build/runtime. Local development defaults to `/photos`;
 the GitHub Pages workflow builds with `https://img.photos.simonlast.org`.
@@ -34,9 +38,8 @@ the GitHub Pages workflow builds with `https://img.photos.simonlast.org`.
 Create `.env` or use `.envrc` with:
 
 ```bash
-R2_ACCOUNT_ID=
-R2_ACCESS_KEY_ID=
-R2_SECRET_ACCESS_KEY=
+CLOUDFLARE_API_TOKEN=
+CLOUDFLARE_ACCOUNT_ID=
 R2_BUCKET=simonlast-photos
 R2_PUBLIC_BASE_URL=https://img.photos.simonlast.org
 ```
@@ -49,7 +52,9 @@ npm run photos:upload
 ```
 
 Uploaded objects use immutable one-year cache headers. Filenames include a
-content hash, so replacing a source image creates new URLs.
+content hash, so replacing a source image creates new URLs. The upload command
+lists existing R2 objects first and skips files whose remote size already
+matches the local generated file.
 
 ## Deployment
 
@@ -58,7 +63,7 @@ builds and uploads `dist`. The repo includes `CNAME` for `photos.simonlast.org`.
 
 Cloudflare DNS:
 
-- `photos` CNAME to `simonlast.github.io`.
-- `img.photos` connected as an R2 custom domain.
+- `photos` proxied CNAME to `simonlast.github.io`.
+- `img.photos` connected as a proxied R2 custom domain.
 
 Keep R2 secrets out of git.

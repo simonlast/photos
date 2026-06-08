@@ -13,7 +13,8 @@ npm run dev
 The local photo processor reads `/Users/simonlast/Pictures/Lightroom exports`
 by default, writes generated assets to ignored `public/photos`, and updates
 `src/data/photos.generated.json`. Each photo gets one bounded AVIF for the
-scrolling page and one original file copy for the lightbox.
+scrolling page and one original file copy for the lightbox. Re-running the
+processor is incremental: unchanged hash-named assets are reused.
 
 ## Checks
 
@@ -22,6 +23,13 @@ npm run lint
 npm run typecheck
 npm run build
 npm run test:e2e
+```
+
+After Cloudflare DNS and R2 are configured, run the same browser suite against
+production:
+
+```bash
+npm run test:e2e:prod
 ```
 
 ## Publishing
@@ -36,5 +44,6 @@ npm run photos:process
 npm run photos:upload
 ```
 
-R2 credentials belong in local `.envrc` or `.env`, never in git. See
-`docs/architecture.md` for the full setup.
+R2 uploads are also incremental: objects already present in R2 with the same
+size are skipped. Cloudflare credentials belong in local `.envrc` or `.env`,
+never in git. See `docs/architecture.md` for the full setup.
