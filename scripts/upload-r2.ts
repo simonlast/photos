@@ -4,6 +4,7 @@ import path from 'node:path'
 import { PutObjectCommand, S3Client } from '@aws-sdk/client-s3'
 import dotenv from 'dotenv'
 
+dotenv.config({ path: '.envrc' })
 dotenv.config()
 
 const outputDir = process.env.PHOTO_OUTPUT_DIR ?? 'public/photos'
