@@ -45,6 +45,8 @@ test('renders the photo list and opens/closes the lightbox', async ({
   await firstPhoto.click()
   await expect(page.locator('.pswp')).toBeVisible()
   await expect(page.locator('.pswp.pswp--open')).toBeVisible()
+  await page.waitForTimeout(1_200)
+  await expect(page.locator('.pswp.pswp--open')).toBeVisible()
   await expect(page.locator('.pswp__counter')).toHaveCount(0)
   await expect(page.locator('.pswp__button--zoom')).toHaveCount(0)
   await expect(page.locator('.pswp__button--arrow')).toHaveCount(0)
@@ -103,6 +105,8 @@ test('renders the photo list and opens/closes the lightbox', async ({
       zoomWrap.evaluate((element) => getComputedStyle(element).transform),
     )
     .not.toBe(initialTransform)
+  await page.waitForTimeout(1_200)
+  await expect(page.locator('.pswp.pswp--open')).toBeVisible()
   await expect.poll(async () => imageTouchesViewportEdge(activeImage)).toBe(true)
 
   await tapImageCenter()
@@ -111,6 +115,8 @@ test('renders the photo list and opens/closes the lightbox', async ({
       zoomWrap.evaluate((element) => getComputedStyle(element).transform),
     )
     .toBe(initialTransform)
+  await page.waitForTimeout(1_200)
+  await expect(page.locator('.pswp.pswp--open')).toBeVisible()
 
   if (testInfo.project.name === 'mobile') {
     await page.touchscreen.tap(8, 8)

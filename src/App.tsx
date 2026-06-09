@@ -50,7 +50,6 @@ function App() {
   useEffect(() => {
     const closeActiveLightbox = () => {
       lightboxRef.current?.pswp?.close()
-      window.setTimeout(() => lightboxRef.current?.pswp?.close(), 1_000)
     }
 
     const handleLightboxTap: ActionFn = (point, originalEvent) => {
