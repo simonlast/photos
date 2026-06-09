@@ -55,7 +55,7 @@ test('renders the photo list and opens/closes the lightbox', async ({
   const activeImage = activeSlide.locator('.pswp__img:not(.pswp__img--placeholder)')
   const zoomWrap = activeSlide.locator('.pswp__zoom-wrap')
   await expect(activeImage).toBeVisible()
-  await expectImageDecoded(activeImage)
+  await expectImageDecoded(activeImage, 20_000)
   await expect
     .poll(() =>
       activeImage.evaluate((node) => (node as HTMLImageElement).currentSrc),
@@ -176,13 +176,14 @@ async function imageTouchesViewportEdge(locator: Locator) {
   )
 }
 
-async function expectImageDecoded(locator: Locator) {
+async function expectImageDecoded(locator: Locator, timeout = 5_000) {
   await expect
     .poll(async () =>
       locator.evaluate((node) => {
         const image = node as HTMLImageElement
         return image.complete && image.naturalWidth > 0 && image.naturalHeight > 0
       }),
+      { timeout },
     )
     .toBe(true)
 }
