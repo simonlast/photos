@@ -1,7 +1,12 @@
 import { createReadStream } from 'node:fs'
 import { readFile, stat } from 'node:fs/promises'
 import path from 'node:path'
-import { PutObjectCommand, S3Client } from '@aws-sdk/client-s3'
+import {
+  DeleteObjectCommand,
+  ListObjectsV2Command,
+  PutObjectCommand,
+  S3Client,
+} from '@aws-sdk/client-s3'
 import dotenv from 'dotenv'
 
 dotenv.config({ path: '.envrc' })
@@ -17,6 +22,7 @@ const r2AccountId = process.env.R2_ACCOUNT_ID
 const r2AccessKeyId = process.env.R2_ACCESS_KEY_ID
 const r2SecretAccessKey = process.env.R2_SECRET_ACCESS_KEY
 const uploadConcurrency = Number(process.env.R2_UPLOAD_CONCURRENCY ?? 4)
+const useCloudflareApi = Boolean(cloudflareApiToken && cloudflareAccountId)
 
 type LocalFile = {
   path: string
@@ -34,8 +40,21 @@ type PhotoManifest = {
   full: { src: string }
 }
 
+const s3Client =
+  useCloudflareApi || !r2AccountId || !r2AccessKeyId || !r2SecretAccessKey
+    ? null
+    : new S3Client({
+        region: 'auto',
+        endpoint: `https://${r2AccountId}.r2.cloudflarestorage.com`,
+        credentials: {
+          accessKeyId: r2AccessKeyId,
+          secretAccessKey: r2SecretAccessKey,
+        },
+      })
+
 async function main() {
   const files = await listManifestFiles()
+  const expectedKeys = new Set(files.map((file) => file.key))
   await ensureBucketExists()
   const remoteObjects = await listRemoteObjects()
   const uploadQueue = files.filter((file) => {
@@ -53,7 +72,17 @@ async function main() {
     console.log(`Uploaded ${file.key}`)
   })
 
+  const deleteQueue = Array.from(remoteObjects.keys()).filter(
+    (key) => isGeneratedPhotoKey(key) && !expectedKeys.has(key),
+  )
+
+  await runWithConcurrency(deleteQueue, uploadConcurrency, async (key) => {
+    await deleteFile(key)
+    console.log(`Deleted stale ${key}`)
+  })
+
   console.log(`Uploaded ${uploadQueue.length} changed files to ${bucket}`)
+  console.log(`Deleted ${deleteQueue.length} stale files from ${bucket}`)
 }
 
 async function listManifestFiles(): Promise<LocalFile[]> {
@@ -80,7 +109,7 @@ async function listManifestFiles(): Promise<LocalFile[]> {
 }
 
 async function ensureBucketExists() {
-  if (cloudflareApiToken && cloudflareAccountId) {
+  if (useCloudflareApi) {
     const result = await cloudflareRequest(
       `accounts/${cloudflareAccountId}/r2/buckets/${bucket}`,
       { method: 'GET' },
@@ -102,7 +131,7 @@ async function ensureBucketExists() {
     return
   }
 
-  if (!r2AccountId || !r2AccessKeyId || !r2SecretAccessKey) {
+  if (!s3Client) {
     throw new Error(
       'Missing Cloudflare R2 credentials. Add CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID, or add R2_ACCOUNT_ID, R2_ACCESS_KEY_ID, and R2_SECRET_ACCESS_KEY.',
     )
@@ -110,28 +139,52 @@ async function ensureBucketExists() {
 }
 
 async function listRemoteObjects() {
-  if (!cloudflareApiToken || !cloudflareAccountId) {
+  if (useCloudflareApi) {
+    const result = await cloudflareRequest(
+      `accounts/${cloudflareAccountId}/r2/buckets/${bucket}/objects?per_page=1000`,
+      { method: 'GET' },
+    )
+
+    if (!result.ok) {
+      throw new Error(await cloudflareErrorMessage(result))
+    }
+
+    const payload = (await result.json()) as {
+      result?: RemoteObject[]
+    }
+
+    return new Map((payload.result ?? []).map((object) => [object.key, object]))
+  }
+
+  if (!s3Client) {
     return new Map<string, RemoteObject>()
   }
 
-  const result = await cloudflareRequest(
-    `accounts/${cloudflareAccountId}/r2/buckets/${bucket}/objects?per_page=1000`,
-    { method: 'GET' },
-  )
+  const objects = new Map<string, RemoteObject>()
+  let continuationToken: string | undefined
 
-  if (!result.ok) {
-    throw new Error(await cloudflareErrorMessage(result))
-  }
+  do {
+    const result = await s3Client.send(
+      new ListObjectsV2Command({
+        Bucket: bucket,
+        ContinuationToken: continuationToken,
+      }),
+    )
 
-  const payload = (await result.json()) as {
-    result?: RemoteObject[]
-  }
+    for (const object of result.Contents ?? []) {
+      if (object.Key && typeof object.Size === 'number') {
+        objects.set(object.Key, { key: object.Key, size: object.Size })
+      }
+    }
 
-  return new Map((payload.result ?? []).map((object) => [object.key, object]))
+    continuationToken = result.NextContinuationToken
+  } while (continuationToken)
+
+  return objects
 }
 
 async function uploadFile(filePath: string, key: string, contentType: string) {
-  if (cloudflareApiToken && cloudflareAccountId) {
+  if (useCloudflareApi) {
     const body = await readFile(filePath)
     const result = await cloudflareRequest(
       `accounts/${cloudflareAccountId}/r2/buckets/${bucket}/objects/${encodeObjectKey(
@@ -154,16 +207,11 @@ async function uploadFile(filePath: string, key: string, contentType: string) {
     return
   }
 
-  const client = new S3Client({
-    region: 'auto',
-    endpoint: `https://${r2AccountId}.r2.cloudflarestorage.com`,
-    credentials: {
-      accessKeyId: requiredEnv('R2_ACCESS_KEY_ID'),
-      secretAccessKey: requiredEnv('R2_SECRET_ACCESS_KEY'),
-    },
-  })
+  if (!s3Client) {
+    throw new Error('Missing R2 upload credentials.')
+  }
 
-  await client.send(
+  await s3Client.send(
     new PutObjectCommand({
       Bucket: bucket,
       Key: key,
@@ -172,6 +220,29 @@ async function uploadFile(filePath: string, key: string, contentType: string) {
       CacheControl: 'public, max-age=31536000, immutable',
     }),
   )
+}
+
+async function deleteFile(key: string) {
+  if (useCloudflareApi) {
+    const result = await cloudflareRequest(
+      `accounts/${cloudflareAccountId}/r2/buckets/${bucket}/objects/${encodeObjectKey(
+        key,
+      )}`,
+      { method: 'DELETE' },
+    )
+
+    if (!result.ok) {
+      throw new Error(await cloudflareErrorMessage(result))
+    }
+
+    return
+  }
+
+  if (!s3Client) {
+    throw new Error('Missing R2 delete credentials.')
+  }
+
+  await s3Client.send(new DeleteObjectCommand({ Bucket: bucket, Key: key }))
 }
 
 function cloudflareRequest(pathname: string, init: RequestInit) {
@@ -210,6 +281,10 @@ function encodeObjectKey(key: string) {
 
 function normalizeManifestSrc(src: string) {
   return src.replace(/^\/+/, '')
+}
+
+function isGeneratedPhotoKey(key: string) {
+  return /-[a-f0-9]{12}-(display\.avif|full\.[a-z0-9]+)$/i.test(key)
 }
 
 async function runWithConcurrency<T>(

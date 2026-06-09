@@ -54,8 +54,9 @@ npm run photos:upload
 
 Uploaded objects use immutable one-year cache headers. Filenames include a
 content hash, so replacing a source image creates new URLs. The upload command
-lists existing R2 objects first and skips files whose remote size already
-matches the local generated file.
+lists existing R2 objects first, skips files whose remote size already matches
+the local generated file, and deletes generated photo objects no longer
+referenced by the current manifest.
 
 ## Deployment
 

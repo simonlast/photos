@@ -45,6 +45,7 @@ npm run photos:process
 npm run photos:upload
 ```
 
-R2 uploads are also incremental: objects already present in R2 with the same
-size are skipped. Cloudflare credentials belong in local `.envrc` or `.env`,
-never in git. See `docs/architecture.md` for the full setup.
+R2 sync is incremental: objects already present in R2 with the same size are
+skipped, and generated photo assets no longer referenced by the current manifest
+are deleted from the bucket. Cloudflare credentials belong in local `.envrc` or
+`.env`, never in git. See `docs/architecture.md` for the full setup.
