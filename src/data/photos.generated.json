@@ -66,28 +66,6 @@
     }
   },
   {
-    "id": "r0000467-032313d6ca7e",
-    "title": "R0000467",
-    "alt": "R0000467",
-    "color": "#3d423f",
-    "placeholder": "data:image/jpeg;base64,/9j/2wBDABUVFRUWFRgaGhghIx8jITAtKSktMEk0ODQ4NElvRVFFRVFFb2J3YVphd2Kxi3t7i7HMrKKszPjd3fj/////////2wBDARUVFRUWFRgaGhghIx8jITAtKSktMEk0ODQ4NElvRVFFRVFFb2J3YVphd2Kxi3t7i7HMrKKszPjd3fj/////////wgARCAAVACADASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAIDBAb/xAAVAQEBAAAAAAAAAAAAAAAAAAAAAf/aAAwDAQACEAMQAAAA5q9mRLzDNpBXiB//xAAkEAACAQQABQUAAAAAAAAAAAABAgADBBESExQhQlExMkFSof/aAAgBAQABPwCjbV65PDps2ILC6Z9Fp5YDqIlldK+q4V+4E4xLu8uBR5cvuV70MSsaYLKxyfgdJzTbl9GL/aNcl/dSJ/Jr0zxGGfUZzEdvMWo3mcRo9Vp//8QAGhEAAQUBAAAAAAAAAAAAAAAAAQACEBFBYf/aAAgBAgEBPwAC9Rb2f//EABkRAQACAwAAAAAAAAAAAAAAAAECQgAQEf/aAAgBAwEBPwCTyq5GS1Tf/9k=",
-    "width": 5811,
-    "height": 3874,
-    "aspectRatio": 1.5,
-    "display": {
-      "src": "r0000467-032313d6ca7e-display.avif",
-      "width": 2160,
-      "height": 1440,
-      "bytes": 264802
-    },
-    "full": {
-      "src": "r0000467-032313d6ca7e-full.jpg",
-      "width": 5811,
-      "height": 3874,
-      "bytes": 11900566
-    }
-  },
-  {
     "id": "r0000412-7a0e6e938a34",
     "title": "R0000412",
     "alt": "R0000412",
