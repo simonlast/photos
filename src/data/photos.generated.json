@@ -110,28 +110,6 @@
     }
   },
   {
-    "id": "r0000353-d521c8513f66",
-    "title": "R0000353",
-    "alt": "R0000353",
-    "color": "#45617d",
-    "placeholder": "data:image/jpeg;base64,/9j/2wBDABUVFRUWFRgaGhghIx8jITAtKSktMEk0ODQ4NElvRVFFRVFFb2J3YVphd2Kxi3t7i7HMrKKszPjd3fj/////////2wBDARUVFRUWFRgaGhghIx8jITAtKSktMEk0ODQ4NElvRVFFRVFFb2J3YVphd2Kxi3t7i7HMrKKszPjd3fj/////////wgARCAAgABUDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAMFAgT/xAAWAQEBAQAAAAAAAAAAAAAAAAAEAQD/2gAMAwEAAhADEAAAAIOrIwcMrFyGMaNnEPLP/8QAHRAAAwEAAgMBAAAAAAAAAAAAAAECAxNRETFBUv/aAAgBAQABPwCcWcLHkxYR8aHjJWUk50cVdjzr9EaT49SPSekVa6R//8QAGREAAgMBAAAAAAAAAAAAAAAAAAECERMS/9oACAECAQE/AFyVE3Zuz//EABgRAAMBAQAAAAAAAAAAAAAAAAABAhMS/9oACAEDAQE/AHVHdGEmCP/Z",
-    "width": 4000,
-    "height": 6000,
-    "aspectRatio": 0.6666666666666666,
-    "display": {
-      "src": "r0000353-d521c8513f66-display.avif",
-      "width": 1200,
-      "height": 1800,
-      "bytes": 80386
-    },
-    "full": {
-      "src": "r0000353-d521c8513f66-full.jpg",
-      "width": 4000,
-      "height": 6000,
-      "bytes": 12421970
-    }
-  },
-  {
     "id": "r0000382-d25222671cd2",
     "title": "R0000382",
     "alt": "R0000382",
