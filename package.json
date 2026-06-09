@@ -12,7 +12,7 @@
     "photos:process": "tsx scripts/process-photos.ts",
     "photos:upload": "tsx scripts/upload-r2.ts",
     "test:e2e": "playwright test",
-    "test:e2e:prod": "PLAYWRIGHT_BASE_URL=https://photos.simonlast.org PLAYWRIGHT_SKIP_WEBSERVER=1 playwright test"
+    "test:e2e:prod": "PLAYWRIGHT_BASE_URL=https://journal.simonlast.org PLAYWRIGHT_SKIP_WEBSERVER=1 playwright test"
   },
   "dependencies": {
     "photoswipe": "^5.4.4",

@@ -1,6 +1,6 @@
-# Photos Architecture
+# Journal Architecture
 
-The site is a static Vite app deployed to GitHub Pages at `photos.simonlast.org`.
+The site is a static Vite app deployed to GitHub Pages at `journal.simonlast.org`.
 Image files are generated locally from Lightroom exports and can be uploaded to
 Cloudflare R2 for production serving.
 
@@ -61,11 +61,11 @@ referenced by the current manifest.
 ## Deployment
 
 GitHub Pages should be configured to deploy from GitHub Actions. The workflow
-builds and uploads `dist`. The repo includes `CNAME` for `photos.simonlast.org`.
+builds and uploads `dist`. The repo includes `CNAME` for `journal.simonlast.org`.
 
 Cloudflare DNS:
 
-- `photos` proxied CNAME to `simonlast.github.io`.
+- `journal` proxied CNAME to `simonlast.github.io`.
 - `img.photos` connected as a proxied R2 custom domain.
 
 Keep R2 secrets out of git.

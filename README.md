@@ -1,6 +1,6 @@
-# Photos
+# Journal
 
-Static photo site for `photos.simonlast.org`.
+Static photo journal for `journal.simonlast.org`.
 
 ## Development
 
@@ -36,7 +36,7 @@ npm run test:e2e:prod
 ## Publishing
 
 GitHub Pages deploys `dist` through `.github/workflows/deploy.yml` and serves
-`photos.simonlast.org` via `CNAME`.
+`journal.simonlast.org` via `CNAME`.
 
 Production image assets should be uploaded to Cloudflare R2:
 
