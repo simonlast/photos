@@ -44,28 +44,6 @@
     }
   },
   {
-    "id": "r0000490-1ecb4cf22007",
-    "title": "R0000490",
-    "alt": "R0000490",
-    "color": "#62615a",
-    "placeholder": "data:image/jpeg;base64,/9j/2wBDABUVFRUWFRgaGhghIx8jITAtKSktMEk0ODQ4NElvRVFFRVFFb2J3YVphd2Kxi3t7i7HMrKKszPjd3fj/////////2wBDARUVFRUWFRgaGhghIx8jITAtKSktMEk0ODQ4NElvRVFFRVFFb2J3YVphd2Kxi3t7i7HMrKKszPjd3fj/////////wgARCAAgABUDASIAAhEBAxEB/8QAGQAAAgMBAAAAAAAAAAAAAAAAAAQBAwUG/8QAFwEBAAMAAAAAAAAAAAAAAAAAAwABAv/aAAwDAQACEAMQAAAAcjHENEoC05evsG/OG2Sv/8QAHxAAAgICAgMBAAAAAAAAAAAAAQIAAwQRITEFElFB/9oACAEBAAE/AKkbWwQZkgV1Eu3ENrjsAzFzAVCt3PJWMKguuz3uJognR7iL+gE/QJmjIvoqRa30n0xfarhqyJjOQw0OItmhLBUx5UT/xAAcEQEAAQQDAAAAAAAAAAAAAAABAAIQERITMVL/2gAIAQIBAT8A2MKM5K/TOm3/xAAaEQADAQADAAAAAAAAAAAAAAAAARESAiJR/9oACAEDAQE/AO1kZnj4JVGD/9k=",
-    "width": 3822,
-    "height": 5733,
-    "aspectRatio": 0.6666666666666666,
-    "display": {
-      "src": "r0000490-1ecb4cf22007-display.avif",
-      "width": 1200,
-      "height": 1800,
-      "bytes": 160378
-    },
-    "full": {
-      "src": "r0000490-1ecb4cf22007-full.jpg",
-      "width": 3822,
-      "height": 5733,
-      "bytes": 10527450
-    }
-  },
-  {
     "id": "r0000467-032313d6ca7e",
     "title": "R0000467",
     "alt": "R0000467",
@@ -151,28 +129,6 @@
       "width": 5953,
       "height": 3969,
       "bytes": 10603208
-    }
-  },
-  {
-    "id": "r0000371-c7a494eef828",
-    "title": "R0000371",
-    "alt": "R0000371",
-    "color": "#4e4749",
-    "placeholder": "data:image/jpeg;base64,/9j/2wBDABUVFRUWFRgaGhghIx8jITAtKSktMEk0ODQ4NElvRVFFRVFFb2J3YVphd2Kxi3t7i7HMrKKszPjd3fj/////////2wBDARUVFRUWFRgaGhghIx8jITAtKSktMEk0ODQ4NElvRVFFRVFFb2J3YVphd2Kxi3t7i7HMrKKszPjd3fj/////////wgARCAAgABUDASIAAhEBAxEB/8QAGQAAAgMBAAAAAAAAAAAAAAAAAAQDBQYB/8QAFwEAAwEAAAAAAAAAAAAAAAAAAQIDBP/aAAwDAQACEAMQAAAAz787K0DhbPRXGYYSrxAEf//EACIQAAIBBQABBQEAAAAAAAAAAAECAwAEERIhExAjMTJBUv/aAAgBAQABPwCOOR/qpNW8MkYMhVWVekKeivErAMPgjIqwj0XTI3zmpWkhTZBs7ZBUDpqHzRRRoY8lVAp71iPbTQ/1+1PeCCONIm2ZlDFm7Rurgnsp9Izygwr/xAAaEQAABwAAAAAAAAAAAAAAAAAAAQIQESFR/9oACAECAQE/AE2JLX//xAAZEQADAQEBAAAAAAAAAAAAAAAAAQIRElH/2gAIAQMBAT8AqUkc14azT//Z",
-    "width": 4000,
-    "height": 6000,
-    "aspectRatio": 0.6666666666666666,
-    "display": {
-      "src": "r0000371-c7a494eef828-display.avif",
-      "width": 1200,
-      "height": 1800,
-      "bytes": 56321
-    },
-    "full": {
-      "src": "r0000371-c7a494eef828-full.jpg",
-      "width": 4000,
-      "height": 6000,
-      "bytes": 12741386
     }
   }
 ]
