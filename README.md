@@ -14,8 +14,9 @@ The local photo processor reads `/Users/simonlast/Pictures/Published` by
 default. Put only the photos you want live in that Finder folder, then run the
 processor. It writes generated assets to ignored `public/photos` and updates the
 internal manifest at `src/data/photos.generated.json`. Each photo gets one
-bounded AVIF for the scrolling page and one original file copy for the lightbox.
-Re-running the processor is incremental: unchanged hash-named assets are reused.
+bounded AVIF for the scrolling page and one high-quality capped AVIF for the
+lightbox. Re-running the processor is incremental: unchanged hash-named assets
+are reused.
 
 ## Checks
 

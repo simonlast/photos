@@ -22,7 +22,7 @@ internal generated manifest at `src/data/photos.generated.json`.
 `npm run photos:process` generates:
 
 - One bounded AVIF image for the scrolling page.
-- One byte-for-byte original copy for the lightbox.
+- One high-quality AVIF image capped at an 8000px long edge for the lightbox.
 - A small base64 placeholder and dominant color.
 - A manifest consumed by the React app.
 

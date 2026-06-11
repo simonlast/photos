@@ -60,7 +60,7 @@ test('renders the photo list and opens/closes the lightbox', async ({
     .poll(() =>
       activeImage.evaluate((node) => (node as HTMLImageElement).currentSrc),
     )
-    .toContain('-full.')
+    .toContain('-lightbox.avif')
   const fitBox = await activeImage.boundingBox()
   const fitViewport = page.viewportSize()
   expect(fitBox).not.toBeNull()

@@ -1,6 +1,5 @@
 import { createHash } from 'node:crypto'
 import {
-  copyFile,
   mkdir,
   readdir,
   readFile,
@@ -25,7 +24,7 @@ type PhotoManifest = {
     height: number
     bytes: number
   }
-  full: {
+  lightbox: {
     src: string
     width: number
     height: number
@@ -39,6 +38,7 @@ const outputDir = process.env.PHOTO_OUTPUT_DIR ?? 'public/photos'
 const manifestPath =
   process.env.PHOTO_MANIFEST_PATH ?? 'src/data/photos.generated.json'
 const displayBounds = { width: 2160, height: 1800 }
+const lightboxBounds = { width: 8000, height: 8000 }
 const inputExtensions = new Set([
   '.avif',
   '.heic',
@@ -67,18 +67,18 @@ async function main() {
     const hash = createHash('sha256').update(buffer).digest('hex').slice(0, 12)
     const baseName = slugify(path.basename(input.path, path.extname(input.path)))
     const id = `${baseName}-${hash}`
-    const fullExtension = path.extname(input.path).toLowerCase()
-    const fullName = `${id}-full${fullExtension}`
-    const fullPath = path.join(outputDir, fullName)
     const displayName = `${id}-display.avif`
     const displayPath = path.join(outputDir, displayName)
+    const lightboxName = `${id}-lightbox.avif`
+    const lightboxPath = path.join(outputDir, lightboxName)
     const existingPhoto = existingPhotos.get(id)
     const canReuseExistingPhoto =
       existingPhoto &&
       existingPhoto.display.src === publicUrl(displayName) &&
-      existingPhoto.full.src === publicUrl(fullName) &&
+      existingPhoto.lightbox &&
+      existingPhoto.lightbox.src === publicUrl(lightboxName) &&
       (await fileHasSize(displayPath, existingPhoto.display.bytes)) &&
-      (await fileHasSize(fullPath, input.size))
+      (await fileHasSize(lightboxPath, existingPhoto.lightbox.bytes))
 
     if (canReuseExistingPhoto) {
       photos.push(existingPhoto)
@@ -86,7 +86,9 @@ async function main() {
       continue
     }
 
-    const image = sharp(buffer, { limitInputPixels: false }).rotate()
+    const image = sharp(buffer, { limitInputPixels: false })
+      .rotate()
+      .toColorspace('srgb')
     const metadata = await image.metadata()
     if (!metadata.width || !metadata.height) {
       console.warn(`Skipping ${input.path}: missing dimensions`)
@@ -108,10 +110,6 @@ async function main() {
       'base64',
     )}`
 
-    if (!(await fileHasSize(fullPath, input.size))) {
-      await copyFile(input.path, fullPath)
-    }
-
     const displayInfo = await image
       .clone()
       .resize({
@@ -122,6 +120,16 @@ async function main() {
       })
       .avif({ quality: 62, effort: 4 })
       .toFile(displayPath)
+    const lightboxInfo = await image
+      .clone()
+      .resize({
+        width: lightboxBounds.width,
+        height: lightboxBounds.height,
+        fit: 'inside',
+        withoutEnlargement: true,
+      })
+      .avif({ quality: 86, effort: 4 })
+      .toFile(lightboxPath)
 
     const dimensions = orientedDimensions(metadata)
 
@@ -140,11 +148,11 @@ async function main() {
         height: displayInfo.height,
         bytes: displayInfo.size,
       },
-      full: {
-        src: publicUrl(fullName),
-        width: dimensions.width,
-        height: dimensions.height,
-        bytes: input.size,
+      lightbox: {
+        src: publicUrl(lightboxName),
+        width: lightboxInfo.width,
+        height: lightboxInfo.height,
+        bytes: lightboxInfo.size,
       },
     })
   }

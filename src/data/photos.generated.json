@@ -1,5 +1,71 @@
 [
   {
+    "id": "dscf0125-60342cfe3d39",
+    "title": "Dscf0125",
+    "alt": "Dscf0125",
+    "color": "#5c4d3a",
+    "placeholder": "data:image/jpeg;base64,/9j/2wBDABUVFRUWFRgaGhghIx8jITAtKSktMEk0ODQ4NElvRVFFRVFFb2J3YVphd2Kxi3t7i7HMrKKszPjd3fj/////////2wBDARUVFRUWFRgaGhghIx8jITAtKSktMEk0ODQ4NElvRVFFRVFFb2J3YVphd2Kxi3t7i7HMrKKszPjd3fj/////////wgARCAAYACADASIAAhEBAxEB/8QAGAABAQEBAQAAAAAAAAAAAAAAAAMEAgb/xAAXAQADAQAAAAAAAAAAAAAAAAABAgME/9oADAMBAAIQAxAAAACd49Z7Mujz7rnFZ1kA/wD/xAAhEAACAgEEAgMAAAAAAAAAAAABAgADBBESITEFEyJRgf/aAAgBAQABPwDn243zPTygBrrgPpY2SdLUKkgDv9mVkMlBcNoxZNI1lTW0lWXhbJgutgv9bDdxPJZLV0ELxufSX5HtVAV5AgfvmIxXptIb3ZdrsWEK6jcOp//EABoRAAICAwAAAAAAAAAAAAAAAAARAQIQITH/2gAIAQIBAT8AZWHvHD//xAAZEQABBQAAAAAAAAAAAAAAAAAAAhARITH/2gAIAQMBAT8AgVTaf//Z",
+    "width": 11352,
+    "height": 8514,
+    "aspectRatio": 1.3333333333333333,
+    "display": {
+      "src": "dscf0125-60342cfe3d39-display.avif",
+      "width": 2160,
+      "height": 1620,
+      "bytes": 126594
+    },
+    "lightbox": {
+      "src": "dscf0125-60342cfe3d39-lightbox.avif",
+      "width": 8000,
+      "height": 6000,
+      "bytes": 2797709
+    }
+  },
+  {
+    "id": "dscf0098-679ec10c2a2a",
+    "title": "Dscf0098",
+    "alt": "Dscf0098",
+    "color": "#91897f",
+    "placeholder": "data:image/jpeg;base64,/9j/2wBDABUVFRUWFRgaGhghIx8jITAtKSktMEk0ODQ4NElvRVFFRVFFb2J3YVphd2Kxi3t7i7HMrKKszPjd3fj/////////2wBDARUVFRUWFRgaGhghIx8jITAtKSktMEk0ODQ4NElvRVFFRVFFb2J3YVphd2Kxi3t7i7HMrKKszPjd3fj/////////wgARCAAYACADASIAAhEBAxEB/8QAGQAAAgMBAAAAAAAAAAAAAAAAAAQBAgUD/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAL/2gAMAwEAAhADEAAAAF2ItFdXM3SMuQubOgf/xAAlEAACAgECBQUBAAAAAAAAAAABAgADESExBBIiUWETMkFzgZH/2gAIAQEAAT8AVD6QJ/CZUijOg37TAO+wlCkPc6sQRX8RLy1KhxsBEcHPbmlTnBznVyJwp04j6oBWN3XaA1n2anxFTlHV/BOCs6r/ABXP/8QAGhEAAQUBAAAAAAAAAAAAAAAAAQACEBEhMf/aAAgBAgEBPwDUG0eT/8QAFhEBAQEAAAAAAAAAAAAAAAAAABEQ/9oACAEDAQE/AFXP/9k=",
+    "width": 11648,
+    "height": 8736,
+    "aspectRatio": 1.3333333333333333,
+    "display": {
+      "src": "dscf0098-679ec10c2a2a-display.avif",
+      "width": 2160,
+      "height": 1620,
+      "bytes": 174351
+    },
+    "lightbox": {
+      "src": "dscf0098-679ec10c2a2a-lightbox.avif",
+      "width": 8000,
+      "height": 6000,
+      "bytes": 3621120
+    }
+  },
+  {
+    "id": "dscf0051-ded8e9704165",
+    "title": "Dscf0051",
+    "alt": "Dscf0051",
+    "color": "#6a605d",
+    "placeholder": "data:image/jpeg;base64,/9j/2wBDABUVFRUWFRgaGhghIx8jITAtKSktMEk0ODQ4NElvRVFFRVFFb2J3YVphd2Kxi3t7i7HMrKKszPjd3fj/////////2wBDARUVFRUWFRgaGhghIx8jITAtKSktMEk0ODQ4NElvRVFFRVFFb2J3YVphd2Kxi3t7i7HMrKKszPjd3fj/////////wgARCAAYACADASIAAhEBAxEB/8QAGQAAAgMBAAAAAAAAAAAAAAAAAAUBAwQG/8QAFgEBAQEAAAAAAAAAAAAAAAAAAQAC/9oADAMBAAIQAxAAAABXLdaaF7DLXUrwHNUCf//EACIQAAICAgICAgMAAAAAAAAAAAECAAMEERIhIjETFUFhcf/aAAgBAQABPwA3VqhGzsrMd1BB/Ymcy2tX+RogQgDsN0fYn1NAQ8EJOug7dQVPTlZdY4kiomU8NYYbZF2lP9B1GRafmY7IBVRFvB9JHxrjlX2jQW2vjLaMoWU29Oa35ALLMW8ppU8C4cgnyn//xAAXEQADAQAAAAAAAAAAAAAAAAAAEDER/9oACAECAQE/ANKRf//EABcRAQADAAAAAAAAAAAAAAAAAAEAECH/2gAIAQMBAT8ACYX/AP/Z",
+    "width": 10946,
+    "height": 8210,
+    "aspectRatio": 1.333252131546894,
+    "display": {
+      "src": "dscf0051-ded8e9704165-display.avif",
+      "width": 2160,
+      "height": 1620,
+      "bytes": 215994
+    },
+    "lightbox": {
+      "src": "dscf0051-ded8e9704165-lightbox.avif",
+      "width": 8000,
+      "height": 6000,
+      "bytes": 3490379
+    }
+  },
+  {
     "id": "r0000534-2ac00090371a",
     "title": "R0000534",
     "alt": "R0000534",
@@ -14,11 +80,11 @@
       "height": 1440,
       "bytes": 243270
     },
-    "full": {
-      "src": "r0000534-2ac00090371a-full.jpg",
+    "lightbox": {
+      "src": "r0000534-2ac00090371a-lightbox.avif",
       "width": 6000,
       "height": 4000,
-      "bytes": 14012425
+      "bytes": 4110628
     }
   },
   {
@@ -36,11 +102,11 @@
       "height": 1440,
       "bytes": 47466
     },
-    "full": {
-      "src": "r0000503-a00dfd263a56-full.jpg",
+    "lightbox": {
+      "src": "r0000503-a00dfd263a56-lightbox.avif",
       "width": 6000,
       "height": 4000,
-      "bytes": 11078172
+      "bytes": 2275741
     }
   },
   {
@@ -58,11 +124,11 @@
       "height": 1440,
       "bytes": 186283
     },
-    "full": {
-      "src": "r0000500-69ea33a4a5a0-full.jpg",
+    "lightbox": {
+      "src": "r0000500-69ea33a4a5a0-lightbox.avif",
       "width": 6000,
       "height": 4000,
-      "bytes": 12872198
+      "bytes": 3082540
     }
   },
   {
@@ -80,11 +146,11 @@
       "height": 1440,
       "bytes": 151830
     },
-    "full": {
-      "src": "r0000412-7a0e6e938a34-full.jpg",
+    "lightbox": {
+      "src": "r0000412-7a0e6e938a34-lightbox.avif",
       "width": 5939,
       "height": 3959,
-      "bytes": 11918202
+      "bytes": 2923829
     }
   },
   {
@@ -102,11 +168,11 @@
       "height": 1800,
       "bytes": 425803
     },
-    "full": {
-      "src": "r0000382-d25222671cd2-full.jpg",
+    "lightbox": {
+      "src": "r0000382-d25222671cd2-lightbox.avif",
       "width": 4000,
       "height": 6000,
-      "bytes": 17910996
+      "bytes": 5924536
     }
   },
   {
@@ -124,11 +190,11 @@
       "height": 1440,
       "bytes": 149402
     },
-    "full": {
-      "src": "r0000378-3952223bc54f-full.jpg",
+    "lightbox": {
+      "src": "r0000378-3952223bc54f-lightbox.avif",
       "width": 5953,
       "height": 3969,
-      "bytes": 10603208
+      "bytes": 2414995
     }
   }
 ]

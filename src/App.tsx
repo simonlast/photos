@@ -63,9 +63,9 @@ function App() {
 
     const lightbox = new PhotoSwipeLightbox({
       dataSource: photos.map((photo) => ({
-        src: resolvePhotoUrl(photo.full.src),
-        width: photo.full.width,
-        height: photo.full.height,
+        src: resolvePhotoUrl(photo.lightbox.src),
+        width: photo.lightbox.width,
+        height: photo.lightbox.height,
         alt: photo.alt,
         msrc: resolvePhotoUrl(photo.display.src),
       })),

@@ -37,7 +37,7 @@ type RemoteObject = {
 
 type PhotoManifest = {
   display: { src: string }
-  full: { src: string }
+  lightbox: { src: string }
 }
 
 const s3Client =
@@ -93,7 +93,7 @@ async function listManifestFiles(): Promise<LocalFile[]> {
     new Set(
       manifest.flatMap((photo) => [
         normalizeManifestSrc(photo.display.src),
-        normalizeManifestSrc(photo.full.src),
+        normalizeManifestSrc(photo.lightbox.src),
       ]),
     ),
   )
@@ -284,7 +284,9 @@ function normalizeManifestSrc(src: string) {
 }
 
 function isGeneratedPhotoKey(key: string) {
-  return /-[a-f0-9]{12}-(display\.avif|full\.[a-z0-9]+)$/i.test(key)
+  return /-[a-f0-9]{12}-(display\.avif|lightbox\.avif|full\.[a-z0-9]+)$/i.test(
+    key,
+  )
 }
 
 async function runWithConcurrency<T>(

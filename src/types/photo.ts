@@ -13,7 +13,7 @@ export type Photo = {
     height: number
     bytes: number
   }
-  full: {
+  lightbox: {
     src: string
     width: number
     height: number
