@@ -70,7 +70,7 @@
 }
 
 .pswp {
-  --pswp-bg: rgba(8, 8, 7, 0.96);
+  --pswp-bg: rgba(255, 255, 255, 0.98);
 }
 
 @media (max-width: 720px) {

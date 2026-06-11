@@ -69,6 +69,7 @@ function App() {
         alt: photo.alt,
         msrc: resolvePhotoUrl(photo.display.src),
       })),
+      bgOpacity: 1,
       bgClickAction: 'close',
       arrowNext: false,
       arrowPrev: false,
