@@ -88,28 +88,6 @@
     }
   },
   {
-    "id": "r0000503-a00dfd263a56",
-    "title": "R0000503",
-    "alt": "R0000503",
-    "color": "#543e27",
-    "placeholder": "data:image/jpeg;base64,/9j/2wBDABUVFRUWFRgaGhghIx8jITAtKSktMEk0ODQ4NElvRVFFRVFFb2J3YVphd2Kxi3t7i7HMrKKszPjd3fj/////////2wBDARUVFRUWFRgaGhghIx8jITAtKSktMEk0ODQ4NElvRVFFRVFFb2J3YVphd2Kxi3t7i7HMrKKszPjd3fj/////////wgARCAAVACADASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAABQAEBv/EABcBAQEBAQAAAAAAAAAAAAAAAAMBAAL/2gAMAwEAAhADEAAAAAEj+gFBsT4U7z6aQ7NWn//EACEQAAICAgICAwEAAAAAAAAAAAECAxEABBIxIlEhIzKR/9oACAEBAAE/AIzEkQKi5OX8HsYdYz64k4CiSSw/bYmpqE2diq7U40BVrABS+8gT708vEWbuuveJOZwppwjIbHV5NqQCB1rgoYNZ7xpCoeMOSnK8M0hBF5DPIFclmsirv5rDsyBXjBNOPKzZxuic/8QAGhEBAAMAAwAAAAAAAAAAAAAAAQACEQMSIf/aAAgBAgEBPwC/I1zAlL99RYnkJ//EABsRAAICAwEAAAAAAAAAAAAAAAACAxEBEjEh/9oACAEDAQE/AI02skVVXnonRs2f/9k=",
-    "width": 6000,
-    "height": 4000,
-    "aspectRatio": 1.5,
-    "display": {
-      "src": "r0000503-a00dfd263a56-display.avif",
-      "width": 2160,
-      "height": 1440,
-      "bytes": 47466
-    },
-    "lightbox": {
-      "src": "r0000503-a00dfd263a56-lightbox.avif",
-      "width": 6000,
-      "height": 4000,
-      "bytes": 2275741
-    }
-  },
-  {
     "id": "r0000500-69ea33a4a5a0",
     "title": "R0000500",
     "alt": "R0000500",

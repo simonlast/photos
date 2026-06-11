@@ -33,7 +33,8 @@ type PhotoManifest = {
 }
 
 const sourceDir =
-  process.env.PHOTO_SOURCE_DIR ?? '/Users/simonlast/Pictures/Published'
+  process.env.PHOTO_SOURCE_DIR ??
+  '/Users/simonlast/Library/Mobile Documents/com~apple~CloudDocs/Photo Workflow/Published'
 const outputDir = process.env.PHOTO_OUTPUT_DIR ?? 'public/photos'
 const manifestPath =
   process.env.PHOTO_MANIFEST_PATH ?? 'src/data/photos.generated.json'

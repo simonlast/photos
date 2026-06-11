@@ -12,10 +12,11 @@ npm run photos:process
 npm run dev
 ```
 
-The default input folder is `/Users/simonlast/Pictures/Published`. That Finder
-folder is the publishing source of truth: put only the photos that should be live
-there. Generated image assets go to `public/photos`, and the app imports the
-internal generated manifest at `src/data/photos.generated.json`.
+The default input folder is
+`/Users/simonlast/Library/Mobile Documents/com~apple~CloudDocs/Photo Workflow/Published`.
+That Finder folder is the publishing source of truth: put only the photos that
+should be live there. Generated image assets go to `public/photos`, and the app
+imports the internal generated manifest at `src/data/photos.generated.json`.
 
 ## Image Pipeline
 
