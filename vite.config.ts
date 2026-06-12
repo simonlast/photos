@@ -8,7 +8,7 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   publicDir: 'static',
-  plugins: [react(), serveGeneratedPhotos()],
+  plugins: [react(), serveGeneratedPhotos(), versionBuiltAppAssets()],
   build: {
     rollupOptions: {
       output: {
@@ -19,6 +19,21 @@ export default defineConfig({
     },
   },
 })
+
+function versionBuiltAppAssets(): Plugin {
+  const version = encodeURIComponent(process.env.GITHUB_SHA ?? 'local')
+
+  return {
+    name: 'version-built-app-assets',
+    apply: 'build',
+    transformIndexHtml(html) {
+      return html.replace(
+        /(\/assets\/(?:index\.js|index\.css))(?=["'])/g,
+        `$1?v=${version}`,
+      )
+    },
+  }
+}
 
 function serveGeneratedPhotos(): Plugin {
   const outputDir = path.resolve(process.env.PHOTO_OUTPUT_DIR ?? 'public/photos')
