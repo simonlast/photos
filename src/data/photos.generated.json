@@ -1,5 +1,27 @@
 [
   {
+    "id": "dscf0274-11cd381d827d",
+    "title": "Dscf0274",
+    "alt": "Dscf0274",
+    "color": "#252321",
+    "placeholder": "data:image/jpeg;base64,/9j/2wBDABUVFRUWFRgaGhghIx8jITAtKSktMEk0ODQ4NElvRVFFRVFFb2J3YVphd2Kxi3t7i7HMrKKszPjd3fj/////////2wBDARUVFRUWFRgaGhghIx8jITAtKSktMEk0ODQ4NElvRVFFRVFFb2J3YVphd2Kxi3t7i7HMrKKszPjd3fj/////////wgARCAAYACADASIAAhEBAxEB/8QAGQAAAgMBAAAAAAAAAAAAAAAAAAMBAgQF/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAH/2gAMAwEAAhADEAAAAOILkzJ34ofIVVQH/8QAHBAAAwADAQEBAAAAAAAAAAAAAAECAxExIRAS/9oACAEBAAE/AIlF15pF7GO3xMxtVSTWzPilfnTXCkdfhLaZVuu/P//EABgRAQEAAwAAAAAAAAAAAAAAAAEAAhAR/9oACAECAQE/AHKHs6//xAAVEQEBAAAAAAAAAAAAAAAAAAARIP/aAAgBAwEBPwAj/9k=",
+    "width": 11648,
+    "height": 8736,
+    "aspectRatio": 1.3333333333333333,
+    "display": {
+      "src": "dscf0274-11cd381d827d-display.avif",
+      "width": 2160,
+      "height": 1620,
+      "bytes": 166295
+    },
+    "lightbox": {
+      "src": "dscf0274-11cd381d827d-lightbox.avif",
+      "width": 8000,
+      "height": 6000,
+      "bytes": 4235603
+    }
+  },
+  {
     "id": "dscf0223-8e3f8791cd39",
     "title": "Dscf0223",
     "alt": "Dscf0223",
@@ -19,28 +41,6 @@
       "width": 8000,
       "height": 6000,
       "bytes": 9741021
-    }
-  },
-  {
-    "id": "dscf0274-b00ce02f901e",
-    "title": "Dscf0274",
-    "alt": "Dscf0274",
-    "color": "#272523",
-    "placeholder": "data:image/jpeg;base64,/9j/2wBDABUVFRUWFRgaGhghIx8jITAtKSktMEk0ODQ4NElvRVFFRVFFb2J3YVphd2Kxi3t7i7HMrKKszPjd3fj/////////2wBDARUVFRUWFRgaGhghIx8jITAtKSktMEk0ODQ4NElvRVFFRVFFb2J3YVphd2Kxi3t7i7HMrKKszPjd3fj/////////wgARCAAYACADASIAAhEBAxEB/8QAGQAAAgMBAAAAAAAAAAAAAAAAAAMBBAUC/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAL/2gAMAwEAAhADEAAAAMWU9FVOhRk+QpCQP//EAB8QAAICAgEFAAAAAAAAAAAAAAECABEDITEEEBJBYf/aAAgBAQABPwBFHuO2qGo9w/IXN0DMRDOARc6jCq+NEcRhKs6ikqY7luT2/8QAGBEAAwEBAAAAAAAAAAAAAAAAAAECEBH/2gAIAQIBAT8AqhPo8//EABURAQEAAAAAAAAAAAAAAAAAABEg/9oACAEDAQE/ACP/2Q==",
-    "width": 11648,
-    "height": 8736,
-    "aspectRatio": 1.3333333333333333,
-    "display": {
-      "src": "dscf0274-b00ce02f901e-display.avif",
-      "width": 2160,
-      "height": 1620,
-      "bytes": 177977
-    },
-    "lightbox": {
-      "src": "dscf0274-b00ce02f901e-lightbox.avif",
-      "width": 8000,
-      "height": 6000,
-      "bytes": 4684565
     }
   },
   {
